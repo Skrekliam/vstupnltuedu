@@ -23,16 +23,7 @@
       integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
       crossorigin="anonymous"
     />
-    <style>
-      option {
-        border-bottom: 1px dashed rgb(185, 185, 185);
-      }
-      
-      option:checked::before {
-        content: "✔";
-      }
-      option:checked { background: red; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="container">
@@ -72,16 +63,20 @@
 
           <div class="invalid-feedback">Будь ласка, заповніть всі поля</div>
         </div>
-        <label for="inputBirthday" class="form-label">Введіть вашу дату народження</label>
+        <label for="inputBirthday" class="form-label"
+          >Введіть вашу дату народження</label
+        >
         <div class="mb-3">
-            <input
-          type="date"
-          class="form-control input-lg"
-          id="inputBirthday"
-          required
-          placeholder="Дата народження"
-        />
-        <div class="invalid-feedback">Будь ласка, вкажіть вашу дату народження</div>
+          <input
+            type="date"
+            class="form-control input-lg"
+            id="inputBirthday"
+            required
+            placeholder="Дата народження"
+          />
+          <div class="invalid-feedback">
+            Будь ласка, вкажіть вашу дату народження
+          </div>
         </div>
         <div class="mb-3">
           <label for="stupin" class="form-label">Освітній ступінь</label>

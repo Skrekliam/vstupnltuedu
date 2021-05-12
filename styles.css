@@ -1,0 +1,15 @@
+option {
+  border-bottom: 1px dashed rgb(185, 185, 185);
+}
+
+option:checked::before {
+  content: "✔";
+}
+option:checked {
+  background: red;
+}
+select,
+input,
+option {
+  transition: 0.5s ease-in;
+}
