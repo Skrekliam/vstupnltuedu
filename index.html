@@ -28,9 +28,9 @@
     <div class="container">
       <div class="jumbotron">
         <h1 class="display-4">Подача документів в приймальну комісію.</h1>
-        <!-- <a class="text-mutted btn btn-outline-primary" onclick="easyMode()" -->
-        <!-- >Спрощенний режим</a -->
-        <!-- > -->
+        <a class="text-mutted" onclick="easyMode()" id="changeSize">
+          Збільшити розмір полів
+        </a>
         <hr />
       </div>
       <form class="needs-validation" novalidate>
@@ -145,23 +145,19 @@
           <label for="specialnist" class="form-label"
             >Виберіть спеціальність (можна декілька)</label
           >
-          <select
-            class="form-select"
-            size="3"
-            aria-label="size 3 select example"
-            multiple
-          >
+          <select class="form-select" size="3" multiple>
             <option value="1" selected>122 Компютерні Науки</option>
             <option value="2">126 Інформаційні системи та технології</option>
           </select>
           <div class="selectedSpec">
             <span class="badge bg-primary"
-              ><span class="badge bg-danger"><i class="fas fa-times"></i></span> 122</span
+              ><span class="badge bg-danger"><i class="fas fa-times"></i></span>
+              122</span
             >
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Відправити</button>
+        <button type="submit" id="submit" class="btn btn-primary">Відправити</button>
       </form>
     </div>
   </body>
