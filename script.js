@@ -32,6 +32,7 @@ const btnCng = document.getElementById("changeSize");
 const inputs = document.getElementsByTagName("input");
 const options = document.getElementsByTagName("option");
 const submitBtn = document.getElementById("submit");
+const prep = document.getElementById("basic-addon1");
 function easyMode() {
   if (largeSize) {
     textSize = 25;
@@ -46,6 +47,7 @@ function easyMode() {
   for (i of options) {
     i.style.fontSize = textSize + "px";
   }
+  prep.fontSize = textSize + "px";
   btnCng.textContent = btnVal + " розмір полів";
   form.style.fontSize = textSize + "px";
   submitBtn.style.fontSize = textSize + "px";

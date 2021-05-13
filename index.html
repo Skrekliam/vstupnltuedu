@@ -23,7 +23,7 @@
       integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
@@ -34,7 +34,8 @@
         </a>
         <hr />
       </div>
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" action="step2.php" method="post" novalidate>
+        <!-- ПІБ -->
         <div class="mb-3">
           <label for="inputPIB" class="form-label">Введіть ваші дані</label>
           <input
@@ -42,6 +43,7 @@
             class="form-control"
             id="inputSurname"
             required
+            name="Surname"
             placeholder="Прізвище"
           />
 
@@ -50,6 +52,7 @@
             class="form-control"
             id="inputName"
             required
+            name="Name"
             placeholder="Імя"
           />
 
@@ -58,35 +61,81 @@
             class="form-control input-lg"
             id="inputFatherName"
             required
+            name="FatherName"
             placeholder="По батькові"
           />
 
           <div class="invalid-feedback">Будь ласка, заповніть всі поля</div>
         </div>
-        <label for="inputBirthday" class="form-label"
-          >Введіть вашу дату народження</label
-        >
+        <!-- Дата народження -->
         <div class="mb-3">
+          <label for="inputBirthday" class="form-label"
+            >Дата народження</label
+          >
           <input
             type="date"
-            class="form-control input-lg"
+            class="form-control"
             id="inputBirthday"
             required
+            name="BDate"
             placeholder="Дата народження"
           />
           <div class="invalid-feedback">
             Будь ласка, вкажіть вашу дату народження
           </div>
         </div>
+        <!-- Номер телефону -->
+        <div class="mb-3">
+          <label for="inputPhone" class="form-label"
+            >Номер телефону</label
+          >
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">+380</span>
+            </div>
+            <input
+              type="tel"
+              class="form-control"
+              id="inputPhone"
+              required
+              name="phone"
+              pattern="[0-9]{9}"
+              maxlength="9"
+              minlength="9"
+              placeholder="961111111"
+            />
+            <div class="invalid-feedback">
+              Будь ласка, вкажіть номер телефону в коректному форматі
+            </div>
+          </div>
+        </div>
+        <!-- Електрона пошта -->
+        <div class="mb-3">
+          <label for="inputEmail" class="form-label"
+            >Електрона пошта</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="inputEmail"
+            name="email"
+            required
+            placeholder="vstup@nltu.edu.ua"
+          />
+          <div class="invalid-feedback">
+            Будь ласка, вкажіть вашу електрону адресу в форматі vstup@nltu.edu.ua
+          </div>
+        </div>
+        <!-- Освітній ступін -->
         <div class="mb-3">
           <label for="stupin" class="form-label">Освітній ступінь</label>
-          <div class="form-check">
+          <div class="form-check ">
             <input
               class="form-check-input"
               type="radio"
               name="stupinRadio"
               id="stupinRadio1"
-              value="option1"
+              value="0"
               checked
             />
             <label class="form-check-label" for="stupinRadio1">
@@ -99,20 +148,60 @@
               type="radio"
               name="stupinRadio"
               id="stupinRadio2"
-              value="option2"
+              value="1"
             />
-            <label class="form-check-label" for="stupinRadio2"> Магістр </label>
+            <label class="form-check-label " for="stupinRadio2"> Магістр </label>
           </div>
         </div>
+        <!-- Форма навчання -->
         <div class="mb-3">
-          <label for="institute" class="form-label">Виберіть інститут</label>
+          <label for="formaNavch" class="form-label">Форма навчання</label>
+          <div class="form-check ">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="formaNavchRadio"
+              id="formaNavchRadio1"
+              value="1"
+              checked
+            />
+            <label class="form-check-label" for="formaNavchRadio1">
+              Денна
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="formaNavchRadio"
+              id="formaNavchRadio2"
+              value="1"
+            />
+            <label class="form-check-label" for="formaNavchRadio2">
+              Заочна(дистанційна) </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="formaNavchRadio"
+              id="formaNavchRadio3"
+              value="2"
+            />
+            <label class="form-check-label" for="formaNavchRadio3">
+              Вечірня </label>
+          </div>
+        </div>
+        <!-- Інститут -->
+        <div class="mb-3">
+          <label for="institute" class="form-label">Інститут</label>
           <div class="form-check">
             <input
               class="form-check-input"
               type="radio"
               name="instituteRadio"
               id="instituteRadio1"
-              value="option1"
+              value="0"
               checked
             />
             <label class="form-check-label" for="instituteRadio1">
@@ -125,7 +214,7 @@
               type="radio"
               name="instituteRadio"
               id="instituteRadio2"
-              value="option2"
+              value="1"
               disabled
             />
             <label class="form-check-label" for="instituteRadio2">
@@ -138,7 +227,7 @@
               type="radio"
               name="instituteRadio"
               id="instituteRadio3"
-              value="option3"
+              value="2"
               disabled
             />
             <label class="form-check-label" for="instituteRadio3">
@@ -151,30 +240,56 @@
               type="radio"
               name="instituteRadio"
               id="instituteRadio4"
-              value="option4"
+              value="3"
               disabled
             />
             <label class="form-check-label" for="instituteRadio4"> ЕЕМ </label>
           </div>
         </div>
+        <!-- Спеціальність -->
         <div class="mb-3">
           <label for="specialnist" class="form-label"
             >Виберіть спеціальність (можна декілька)</label
           >
-          <select class="form-select" size="3" multiple>
-            <option value="1" selected>122 Компютерні Науки</option>
-            <option value="2">126 Інформаційні системи та технології</option>
+          <select name="spec[]" class="form-select" size="3" multiple>
+            <option  value="122" selected>122 Компютерні Науки</option>
+            <option  value="126">126 Інформаційні системи та технології</option>
           </select>
-          <div class="selectedSpec">
-            <span class="badge bg-primary"
-              ><span class="badge bg-danger"><i class="fas fa-times"></i></span>
-              122</span
-            >
+         
+        </div>
+
+        <!-- Наступний крок -->
+        <div class="mb-3">
+          <!-- <label for="nextStep" class="form-label">Освітній ступінь</label> -->
+          <div class="form-check ">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="nextStepRadio"
+              id="nextStepRadio1"
+              value="option1"
+              checked
+            />
+            <label class="form-check-label" for="nextStepRadio1">
+              Я після коледжу
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="nextStepRadio"
+              id="nextStepRadio2"
+              value="option2"
+            />
+            <label class="form-check-label " for="nextStepRadio2">
+               Я після 11 класу </label>
           </div>
         </div>
 
+
         <button type="submit" id="submit" class="btn btn-primary">
-          Відправити
+          Наступний крок
         </button>
       </form>
     </div>
