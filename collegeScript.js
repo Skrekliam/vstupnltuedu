@@ -38,7 +38,7 @@ function onInput(e) {
 
   if (regions[val]) {
     err.textContent = "";
-    inpUniv.textContent = "";
+    inpUniv.value = "";
     inpUniv.disabled = false;
     getApi(regions[val]);
   } else {
@@ -77,8 +77,8 @@ function getApi(idObl) {
         let univ = document.getElementById("univ");
         for (var els of resp) {
           let optionU = document.createElement("option");
-          optionU.value = els["university_name"];
-          univ.append(optionU);
+          optionU.textContent = els["university_name"];
+          univ.appendChild(optionU);
         }
       }
     }
@@ -87,6 +87,10 @@ function getApi(idObl) {
   xhr.send();
 }
 
+function clearF(){
+    console.log(123);
+    inpObl.value = '';
+}
 
 
 

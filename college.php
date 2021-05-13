@@ -23,10 +23,10 @@
             </a>
             <hr />
         </div>
-        <input list="obl" id="oblId" placeholder="Disctricts" />
+        <input list="obl" id="oblId" placeholder="Disctricts" /><button onclick="clearF()">❌</button>
         <datalist id="obl"> </datalist>
 
-        <input list="univ" id="univId" placeholder="Univers" />
+        <input size='15' style="width:100%" list="univ" id="univId" placeholder="Univers" />
         <datalist id="univ"> </datalist>
         <p style="color: red; font-size: 25px" id="err"></p>
 
