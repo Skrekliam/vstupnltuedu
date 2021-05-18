@@ -55,7 +55,6 @@
                 $alertStatus = 'success';
                 echo '✔ Дані про ' . $str . ' відправлені <br/>';
             }
-
             return $s;
 
 
