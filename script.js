@@ -20,9 +20,6 @@
   });
 })();
 
-const bDate = document.getElementById("inputBirthday");
-const date1 = new Date();
-bDate.setAttribute("max", 1900 + date1.getYear() - 16 + "-08-01");
 
 let largeSize = true;
 let textSize = 25;
