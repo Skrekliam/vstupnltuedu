@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Інформація</title>
+    <title>Інформаційна сторінка</title>
     <?php include('./bootstrapInfo.php') ?>
 </head>
 
@@ -19,26 +19,44 @@
         <?php
         $savedData = $_POST;
 
-        $alertStatus = 'success';
+
+        function checkConnection()
+        {
+            require('./connection.php');
+            $result = mysqli_query($con, "SHOW TABLES");
+            if ($result) {
+
+                return  'success';
+            } else {
+                return 'danger';
+            }
+        }
+
+
+        $alertStatus  = checkConnection();
 
         function sql($req, $str)
         {
             // require('./connection.php');
             // $s = mysqli_query($con, $req);
             // // print('after insert');
+            require('./connection.php');
 
-            try {
-                require('./connection.php');
-                $s = mysqli_query($con, $req);
-                echo '✔ Дані про ' . $str . ' відправлені <br/>';
-                return $s;
-            } catch (Exception $e) {
-                $alertStatus = 'danger';
-                throw $e;
-                print_r($e);
+
+            $s = mysqli_query($con, $req);
+
+            if (!$s) {
+
+                // throw $e->getMessage();
+                print_r($e->getMessage());
                 echo '❌ <b>Дані про ' . $str . ' не відправлені</b> <br/>';
+            } else {
+                global $alertStatus;
+                $alertStatus = 'success';
+                echo '✔ Дані про ' . $str . ' відправлені <br/>';
             }
-            
+
+            return $s;
 
 
 
@@ -85,7 +103,7 @@
         // $result = "INSERT INTO abiturients(idAbit,Surname,Name,FatherName,isBachelour,Institute,Specialty) values (1,$Surname,$Name,$FatherName,$stupin,$institute,$spec)";
         $result = "INSERT INTO abiturients(Surname,Name,FatherName,isBachelour,Institute) values ('$Surname','$Name','$FatherName','$stupin','$institute')";
 
-        echo "<div class='alert alert-". $alertStatus . "' role='alert'>";
+        echo "<div class='alert alert-" . $alertStatus . "' role='alert'>";
 
         sql($result, "особу");
 
@@ -95,7 +113,7 @@
         $select = "SELECT * FROM `abiturients` where Surname='$Surname' and Name='$Name' and FatherName='$FatherName' ORDER BY `idAbit` DESC LIMIT 1";
 
         // all data abiturient
-        $req = sql($select, 'сособовий номер');
+        $req = sql($select, 'особовий номер');
 
         $f = mysqli_fetch_array($req);
 
@@ -116,10 +134,9 @@
 
 
         for ($i = 0; $i < count($spec); $i++) {
-            
+
             $insExam = "INSERT INTO exams(`idexams`,`specid`) values ($id,$spec[$i])";
             sql($insExam, "екзамен на спеціальність $spec[$i]");
-            
         }
         echo '</div>';
 
