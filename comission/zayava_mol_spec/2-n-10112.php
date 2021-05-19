@@ -145,7 +145,7 @@ $collage = mysqli_fetch_assoc($collageRes);
     <title></title>
 </head>
 
-<body>
+<body onkeydown="handleKeyDown(event)">
     <div id="sidebar">
         <div id="outline">
         </div>
@@ -361,4 +361,12 @@ $collage = mysqli_fetch_assoc($collageRes);
     </div>
 </body>
 
+
+<script>
+    const handleKeyDown = (e) => {
+        if(e.key === 'Enter'){
+            window.print();
+        }
+    }
+</script>
 </html>

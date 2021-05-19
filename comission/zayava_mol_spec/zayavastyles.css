@@ -1,8 +1,25 @@
-.user-text{
-    /* background-color: #ff9292; */
-    text-decoration: underline;
-    font-size: 52px;
-    overflow-wrap: break-word;
-    max-width: 70%;
-    word-break: break-all;
+.user-text {
+  background-color: #ff9292;
+  text-decoration: underline;
+  font-size: 52px;
+  overflow-wrap: break-word;
+  max-width: 70%;
+  word-break: break-all;
+  
 }
+@media print {
+    .user-text {  
+        background-color: transparent;
+        font-family: georgia, serif;
+        font-size: 85px; }
+  }
+  @media screen {
+    .user-text { 
+        /* background-color: #fff;  */
+        font-family: georgia, serif;
+        font-size: 52px; }
+  }
+  @media screen, print {
+    .user-text { line-height: 1.2 }
+  }
+ 
