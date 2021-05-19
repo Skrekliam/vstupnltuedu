@@ -196,7 +196,7 @@ echo '<table class="table caption-top table-fit table-bordered"><caption>Кол�
         <div class="card-body">
             <h5 class="card-title">Друк заяви</h5>
             <p class="card-text">Заява бакалавр на молодшого спеціаліста.</p>
-            <a href="#" class="btn btn-primary w-50">Друк</a>
+            <a target="_blank" href="./zayava_mol_spec/2-n-10112.php?id=<?php echo $id; ?>" class="btn btn-primary w-50">Друк</a>
         </div>
     </div>
 

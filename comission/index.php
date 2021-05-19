@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_user'] = $myusername;
         
 //http://".$_SERVER['HTTP_HOST']."
-        header("location: http://www.vstup.nltu.edu.ua/comission/abitListTable.php");
+        header("location: http://".$_SERVER['HTTP_HOST']."/comission/abitListTable.php");
         
     } else {
         $error = "Your Login Name or Password is invalid";
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<form action="comission" method="POST">
+<form action="comission/index.php" method="POST">
     <div class="container">
         <div class="input-group mb-3">
             <label for="basic-url">Логін</label>

@@ -3,14 +3,13 @@
 session_start();
 var_dump($_SESSION);
 if (!$_SESSION["login_user"]) {
-    // header("location: http://".$_SERVER['HTTP_HOST']."/comission");
+    header("location: http://".$_SERVER['HTTP_HOST']."/comission");
 }
 
 
 if (array_key_exists('closeSession', $_POST)) {
-    echo '<script>alert(`exit`)</script>';
     session_destroy();
-    // header("location: comission");
+    header("location: http://".$_SERVER['HTTP_HOST']."/comission");
 }
 
 ?>
