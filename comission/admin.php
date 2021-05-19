@@ -4,14 +4,14 @@
 session_start();
 var_dump($_SESSION);
 if (!$_SESSION["login_user"]) {
-    header("location: login.php");
+    header("location: comission");
 }
 
 
 if (array_key_exists('closeSession', $_POST)) {
     echo 'clear';
     session_destroy();
-    header("location: login.php");
+    header("location: comission");
 }
 
 ?>

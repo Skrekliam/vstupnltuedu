@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<form action="login.php" method="POST">
+<form action="comission" method="POST">
     <div class="container">
         <div class="input-group mb-3">
             <label for="basic-url">Логін</label>
@@ -39,7 +39,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
     echo 'her';
-    require './connection.php';
+    require '../connection.php';
     $myusername = mysqli_real_escape_string($con, $_POST['login']);
     $mypassword = mysqli_real_escape_string($con, $_POST['password']);
     
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_user'] = $myusername;
         
 
-        header("location: admin.php");
+        header("location: comission/admin.php");
     } else {
         $error = "Your Login Name or Password is invalid";
     echo 'he41';
