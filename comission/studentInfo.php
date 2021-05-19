@@ -137,6 +137,8 @@
 
 
 
+
+
     echo '<table class="table caption-top table-fit table-bordered"><caption>Екзамени</caption>
     <tr><th>Код</th><th>Назва</th></tr>';
     while ($examsTable = mysqli_fetch_assoc($examsTableRes)) {
@@ -145,6 +147,25 @@
     }
 
     echo '</table></div>';
+
+// Інформація про абіт
+
+$collageSql = "SELECT * FROM `collageinfo` where `idcollageinfo`='$id'";
+$collageRes = sqlStr($collageSql);
+
+
+$collage = mysqli_fetch_assoc($collageRes);
+echo '<table class="table caption-top table-fit table-bordered"><caption>Коледж</caption>
+<tr><th>Поле</th><th>Значення</th></tr>
+<tr  onclick="changeField(`collage`,`obl`)"><td>Область</td><td>' . $collage['obl'] . '</td></tr>
+<tr  onclick="changeField(`collage`,`col`)"><td>Назва НЗ</td><td>' . $collage['col'] . '</td></tr>
+<tr  onclick="changeField(`collage`,`year`)"><td>Рік закінчення</td><td>' . $collage['year'] . '</td></tr>
+
+</table>';
+
+
+
+
 
     ?>
 

@@ -2,4 +2,7 @@
     background-color: #ff9292;
     text-decoration: underline;
     font-size: 52px;
+    overflow-wrap: break-word;
+    max-width: 70%;
+    word-break: break-all;
 }

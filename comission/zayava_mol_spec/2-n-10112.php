@@ -38,6 +38,24 @@ function switchformaNavch($id)
 
         return $instituteTable['InstituteNameUk'];
     }
+    function spliceLong($str){
+        $expstr = explode(' ',$str);
+        $cnt = 0;
+        $len = 0;
+    
+        foreach($expstr as &$i){
+            if($cnt < 130){
+                $len = $len + 1;
+                $cnt = $cnt + strlen($i);
+            }
+        }
+        $first = implode(' ',array_slice($expstr,0,$len));
+        $sec =  implode(' ',array_slice($expstr,$len, count($expstr)-$len));
+        return [$first,$sec];
+    }
+    
+   
+
 
     function switchSpecialty($id)
     {
@@ -56,7 +74,7 @@ function sqlStr($str)
     $result = mysqli_query($con, $str);
     return $result;
 }
-$id=130;
+$id=137;
 // Таблиця абітурієнт
 $abitTableSql = "SELECT * FROM `abiturients` where `idabiturients`='$id'";
 $abitTableRes = sqlStr($abitTableSql);
@@ -80,6 +98,13 @@ $infoTable = mysqli_fetch_assoc($infoTableRes);
 // Exams
 $examsTableSql = "SELECT * FROM `exams` where `idexams`='$id'";
 $examsTableRes = sqlStr($examsTableSql);
+
+//collage
+$collageSql = "SELECT * FROM `collageinfo` where `idcollageinfo`='$id'";
+$collageRes = sqlStr($collageSql);
+
+
+$collage = mysqli_fetch_assoc($collageRes);
 
 
 
@@ -144,14 +169,7 @@ $examsTableRes = sqlStr($examsTableSql);
                 <div class="t m0 x0 h4 y10 ff1 fs1 fc0 sc0 ls0 ws0">на<span class="ff2"> </span>основі<span class="ff2"> </span>освітньо-кваліфікаційного<span class="ff2"> </span>рівня<span class="ff2"> </span>молодшого<span class="ff2"> </span>спеціаліста</div>
                 <div class="t m0 x0 h7 y11 ff1 fs1 fc0 sc0 ls0 ws0">конкурсна<span class="ff2"> </span>пропозиція<span class="ff2"> <span class="fs4 user-text"><!-- exams --> <?php 
                 //exams
-                $lim = 0;
-                while ($examsTable = mysqli_fetch_assoc($examsTableRes)) 
-                { 
-                    if($lim<2){
-                        echo switchSpecialty($examsTable['specid']).', ' ;
-                        $lim = $lim + 1;  
-                    }
-                }
+                echo '__________________________________________________'
 
                 ?></span></span></div>
                 <div class="t m0 x8 h5 y12 ff1 fs2 fc0 sc0 ls0 ws0">(назва<span class="ff2"> </span>конкурсної<span class="ff2"> </span>пропозиції<span class="ff2"> </span>державною<span class="ff2"> </span>мовою)</div>
@@ -169,6 +187,15 @@ $examsTableRes = sqlStr($examsTableSql);
                 <div class="t m0 x9 h5 y14 ff1 fs2 fc0 sc0 ls0 ws0">(код<span class="ff2"> </span>та<span class="ff2"> </span>найменування<span class="ff2"> </span>спеціальності,<span class="ff2"> </span>спеціалізації<span class="ff2"> </span>спеціальностей<span class="ff2"> 014, 015, 035, 275)</span></div>
                 <div class="t m0 x0 h7 y15 ff2 fs4 fc0 sc0 ls0 ws0 user-text"><?php 
                     
+                    $examsTableRes = sqlStr($examsTableSql);
+                    $lim = 0;
+                    while ($examsTable = mysqli_fetch_assoc($examsTableRes)) 
+                    { 
+                        if($lim<2){
+                            echo switchSpecialty($examsTable['specid']).', ' ;
+                            $lim = $lim + 1;  
+                        }
+                    }   
 
                 ?></div>
                 <div class="t m0 xa h5 y16 ff1 fs2 fc0 sc0 ls0 ws0">(назва<span class="ff2"> </span>спеціалізації<span class="ff2"> </span>та/або<span class="ff2"> </span>освітньої<span class="ff2"> </span>програми<span class="ff2"> </span>державною<span class="ff2"> </span>мовою)</div>
@@ -181,12 +208,12 @@ $examsTableRes = sqlStr($examsTableSql);
                 <div class="t m0 x0 h4 y1d ff1 fs1 fc0 sc0 ls0 ws0">Відповідний<span class="ff2"> <span class="_ _3"> </span></span>ступінь<span class="ff2"> <span class="_ _3"> </span></span>вищої<span class="ff2"> <span class="_ _3"> </span></span>освіти<span class="ff2"> <span class="_ _3"> </span></span>за<span class="ff2"> <span class="_ _3"> </span></span>бюджетні<span class="ff2"> <span class="_ _3"> </span></span>кошти:<span class="ff2"> <span class="_ _3"> </span></span>ніколи<span class="ff2"> <span class="_ _3"> </span></span>не<span class="ff2"> <span class="_ _3"> </span></span>здобувався<span class="ff2"> <span class="_ _4"> </span>; <span class="_ _3"> </span></span>вже<span class="ff2"> <span class="_ _3"> </span></span>здобутий<span class="ff2"> <span class="_ _3"> </span></span>раніше<span class="ff2"> <span class="_ _4"> </span>; </span></div>
                 <div class="t m0 x0 h4 y1e ff1 fs1 fc0 sc0 ls0 ws0">вже<span class="ff2"> </span>здобувався<span class="ff2"> </span>раніше<span class="ff2"> </span>(навчання<span class="ff2"> </span>не<span class="ff2"> </span>завершено)<span class="ff2"> </span></div>
                 <div class="t m0 x0 h4 y1f ff1 fs1 fc0 sc0 ls0 ws0">Закінчив(ла)<span class="ff2 user-text"> <?php 
-                
-                
+                [$f,$s] = spliceLong($collage['col']);
+                echo $f;
 
                 ?></span></div>
                 <div class="t m0 xc h5 y20 ff1 fs2 fc0 sc0 ls0 ws0">(повне<span class="ff2"> </span>найменування<span class="ff2"> </span>закладу<span class="ff2"> </span>освіти,<span class="ff2"> </span>рік<span class="ff2"> </span>закінчення)</div>
-                <div class="t m0 x0 h4 y21 ff2 fs1 fc0 sc0 ls0 ws0">_____________________________________________________. <span class="ff1">Іноземна</span> <span class="ff1">мова,</span> <span class="ff1">яку</span> <span class="ff1">вивчав(ла)</span> ____________________</div>
+                <div class="t m0 x0 h4 y21 ff2 fs1 fc0 sc0 ls0 ws0 "><span class="user-text"><?php echo $s . ', '.$collage['year']  ?></span>. <span class="ff1">Іноземна</span> <span class="ff1">мова,</span> <span class="ff1">яку</span> <span class="ff1">вивчав(ла)</span> ____________________</div>
                 <div class="c x0 y22 w2 h8">
                     <div class="t m0 xd h9 y23 ff1 fs5 fc0 sc0 ls0 ws0">№<span class="ff2"> </span></div>
                     <div class="t m0 xe h9 y24 ff1 fs5 fc0 sc0 ls0 ws0">з/п</div>
