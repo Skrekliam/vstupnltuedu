@@ -1,4 +1,8 @@
-<?php
+  <?php
+
+
+
+$date = new DateTime();
 
 function switchformaNavch($id)
     {
@@ -108,7 +112,7 @@ $collage = mysqli_fetch_assoc($collageRes);
 
 
 
-?>
+?>  
 
 
 
@@ -151,29 +155,29 @@ $collage = mysqli_fetch_assoc($collageRes);
                 <div class="t m0 x3 h4 y6 ff1 fs1 fc0 sc0 ls0 ws0">Першочерговий<span class="ff2"> </span>вступ<span class="ff2"> </span></div>
                 <div class="t m0 x0 h4 y7 ff1 fs1 fc0 sc0 ls0 ws0">Керівнику<span class="ff2 user-text"><!-- first --->     Національного Лісотехнічого Університету України</span></div>
                 <div class="t m0 x4 h5 y8 ff1 fs2 fc0 sc0 ls0 ws0">(найменування<span class="ff2"> </span>закладу<span class="ff2"> </span>вищої<span class="ff2"> </span>освіти)</div>
-                <div class="t m0 x0 h4 y9 ff1 fs1 fc0 sc0 ls0 ws0">вступника<span class="ff2 user-text"><!-- name,surname --->  <?php
+                <div class="t m0 x0 h4 y9 ff1 fs1 fc0 sc0 ls0 ws0">вступника<span class="ff2 user-text"><!-- name,surname --->    <?php
                 // name surname
                 echo $abitTable['Surname'].' '.$abitTable['Name'].' '.$abitTable['FatherName'] 
                  
-                 ?></span></div>
+                 ?>  </span></div>
                 <div class="t m0 x5 h5 ya ff1 fs2 fc0 sc0 ls0 ws0">(прізвище,<span class="ff2"> </span>ім’я,<span class="ff2"> </span>по<span class="ff2"> </span>батькові)</div>
                 <div class="t m0 x5 h6 yb ff3 fs3 fc0 sc0 ls0 ws0">ЗАЯВА</div>
-                <div class="t m0 x0 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Прошу<span class="ff2"> </span>допустити<span class="ff2"> </span>мене<span class="ff2"> </span>до<span class="ff2"> </span>участі<span class="ff2"> </span>в<span class="ff2"> </span>конкурсному<span class="ff2"> </span>відборі<span class="ff2"> </span>на<span class="ff2"> </span>навчання<span class="ff2"> </span>за<span class="ff2 user-text"> <!--formaNavch-->    <?php echo switchformaNavch($infoTable['formaNavch']) ?>    </span>формою<span class="ff2"> </span>здобуття<span class="ff2"> </span>освіти</div>
+                <div class="t m0 x0 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Прошу<span class="ff2"> </span>допустити<span class="ff2"> </span>мене<span class="ff2"> </span>до<span class="ff2"> </span>участі<span class="ff2"> </span>в<span class="ff2"> </span>конкурсному<span class="ff2"> </span>відборі<span class="ff2"> </span>на<span class="ff2"> </span>навчання<span class="ff2"> </span>за<span class="ff2 user-text"> <!--formaNavch-->      <?php echo switchformaNavch($infoTable['formaNavch']) ?>      </span>формою<span class="ff2"> </span>здобуття<span class="ff2"> </span>освіти</div>
                 <div class="t m0 x6 h5 yd ff2 fs2 fc0 sc0 ls0 ws0"> <span class="ff1">(денна,</span> <span class="ff1">заочна</span> <span class="ff1">(дистанційна),</span> <span class="ff1">вечірня)</span></div>
-                <div class="t m0 x0 h4 ye ff1 fs1 fc0 sc0 ls0 ws0">для<span class="ff2"> </span>здобуття<span class="ff2"> </span>ступеня<span class="ff2 user-text"><!-- stupin --> <?php
+                <div class="t m0 x0 h4 ye ff1 fs1 fc0 sc0 ls0 ws0">для<span class="ff2"> </span>здобуття<span class="ff2"> </span>ступеня<span class="ff2 user-text"><!-- stupin -->   <?php
                 // stupin osv
                 echo switchisBachelour($abitTable['isBachelour']) 
                 
-                ?></span></div>
+                ?>  </span></div>
                 <div class="t m0 x7 h5 yf ff1 fs2 fc0 sc0 ls0 ws0">(бакалавр<span class="ff2"> </span>або<span class="ff2"> </span>магістр)</div>
                 <div class="t m0 x0 h4 y10 ff1 fs1 fc0 sc0 ls0 ws0">на<span class="ff2"> </span>основі<span class="ff2"> </span>освітньо-кваліфікаційного<span class="ff2"> </span>рівня<span class="ff2"> </span>молодшого<span class="ff2"> </span>спеціаліста</div>
-                <div class="t m0 x0 h7 y11 ff1 fs1 fc0 sc0 ls0 ws0">конкурсна<span class="ff2"> </span>пропозиція<span class="ff2"> <span class="fs4 user-text"><!-- exams --> <?php 
+                <div class="t m0 x0 h7 y11 ff1 fs1 fc0 sc0 ls0 ws0">конкурсна<span class="ff2"> </span>пропозиція<span class="ff2"> <span class="fs4"><!-- exams -->   <?php 
                 //exams
                 echo '__________________________________________________'
 
-                ?></span></span></div>
+                ?>  </span></span></div>
                 <div class="t m0 x8 h5 y12 ff1 fs2 fc0 sc0 ls0 ws0">(назва<span class="ff2"> </span>конкурсної<span class="ff2"> </span>пропозиції<span class="ff2"> </span>державною<span class="ff2"> </span>мовою)</div>
-                <div class="t m0 x0 h7 y13 ff1 fs1 fc0 sc0 ls0 ws0">спеціальність/напрям<span class="ff2 fs4 user-text"> <?php
+                <div class="t m0 x0 h7 y13 ff1 fs1 fc0 sc0 ls0 ws0">спеціальність/напрям<span class="ff2 fs4 user-text">   <?php
                 $examsTableRes = sqlStr($examsTableSql);
                 while ($examsTable = mysqli_fetch_assoc($examsTableRes)) 
                 { 
@@ -183,9 +187,9 @@ $collage = mysqli_fetch_assoc($collageRes);
                     }
                 
                 
-                ?></span></div>
+                ?>  </span></div>
                 <div class="t m0 x9 h5 y14 ff1 fs2 fc0 sc0 ls0 ws0">(код<span class="ff2"> </span>та<span class="ff2"> </span>найменування<span class="ff2"> </span>спеціальності,<span class="ff2"> </span>спеціалізації<span class="ff2"> </span>спеціальностей<span class="ff2"> 014, 015, 035, 275)</span></div>
-                <div class="t m0 x0 h7 y15 ff2 fs4 fc0 sc0 ls0 ws0 user-text"><?php 
+                <div class="t m0 x0 h7 y15 ff2 fs4 fc0 sc0 ls0 ws0 user-text">  <?php 
                     
                     $examsTableRes = sqlStr($examsTableSql);
                     $lim = 0;
@@ -197,7 +201,7 @@ $collage = mysqli_fetch_assoc($collageRes);
                         }
                     }   
 
-                ?></div>
+                ?>  </div>
                 <div class="t m0 xa h5 y16 ff1 fs2 fc0 sc0 ls0 ws0">(назва<span class="ff2"> </span>спеціалізації<span class="ff2"> </span>та/або<span class="ff2"> </span>освітньої<span class="ff2"> </span>програми<span class="ff2"> </span>державною<span class="ff2"> </span>мовою)</div>
                 <div class="t m0 xb h4 y17 ff2 fs1 fc0 sc0 ls0 ws0"> <span class="_ _0"> </span><span class="ff1">Претендую</span> <span class="_ _0"> </span><span class="ff1">на</span> <span class="_ _0"> </span><span class="ff1">участь</span> <span class="_ _0"> </span><span class="ff1">у</span> <span class="_ _0"> </span><span class="ff1">конкурсі</span> <span class="_ _0"> </span><span class="ff1">на</span> <span class="_ _0"> </span><span class="ff1">місця</span> <span class="_ _0"> </span><span class="ff1">за</span> <span class="_ _0"> </span><span class="ff1">кошти</span> <span class="_ _0"> </span><span class="ff1">державного</span> <span class="_ _0"> </span><span class="ff1">або</span> <span class="_ _0"> </span><span class="ff1">регіонального</span> <span class="_ _0"> </span><span class="ff1">бюджету</span> <span class="_ _0"> </span><span class="ff1">і</span> <span class="_ _0"> </span><span class="ff1">на</span> <span class="_ _0"> </span><span class="ff1">участь</span> <span class="_ _0"> </span><span class="ff1">у</span> </div>
                 <div class="t m0 x0 h4 y18 ff1 fs1 fc0 sc0 ls0 ws0">конкурсі<span class="ff2"> <span class="_ _1"> </span></span>на<span class="ff2"> <span class="_ _1"> </span></span>місця<span class="ff2"> <span class="_ _1"> </span></span>за<span class="ff2"> <span class="_ _1"> </span></span>кошти<span class="ff2"> <span class="_ _1"> </span></span>фізичних<span class="ff2"> <span class="_ _1"> </span></span>та/або<span class="ff2"> <span class="_ _1"> </span></span>юридичних<span class="ff2"> <span class="_ _1"> </span></span>осіб<span class="ff2"> <span class="_ _1"> </span></span>у<span class="ff2"> <span class="_ _1"> </span></span>разі<span class="ff2"> <span class="_ _1"> </span></span>неотримання<span class="ff2"> <span class="_ _1"> </span></span>рекомендації<span class="ff2"> <span class="_ _1"> </span></span>за<span class="ff2"> <span class="_ _1"> </span></span>цією<span class="ff2"> <span class="_ _1"> </span></span>конкурсною<span class="ff2"> </span></div>
@@ -207,13 +211,13 @@ $collage = mysqli_fetch_assoc($collageRes);
                 <div class="t m0 x8 h6 y1c ff3 fs3 fc0 sc0 ls0 ws0">Про<span class="ff4"> </span>себе<span class="ff4"> </span>повідомляю</div>
                 <div class="t m0 x0 h4 y1d ff1 fs1 fc0 sc0 ls0 ws0">Відповідний<span class="ff2"> <span class="_ _3"> </span></span>ступінь<span class="ff2"> <span class="_ _3"> </span></span>вищої<span class="ff2"> <span class="_ _3"> </span></span>освіти<span class="ff2"> <span class="_ _3"> </span></span>за<span class="ff2"> <span class="_ _3"> </span></span>бюджетні<span class="ff2"> <span class="_ _3"> </span></span>кошти:<span class="ff2"> <span class="_ _3"> </span></span>ніколи<span class="ff2"> <span class="_ _3"> </span></span>не<span class="ff2"> <span class="_ _3"> </span></span>здобувався<span class="ff2"> <span class="_ _4"> </span>; <span class="_ _3"> </span></span>вже<span class="ff2"> <span class="_ _3"> </span></span>здобутий<span class="ff2"> <span class="_ _3"> </span></span>раніше<span class="ff2"> <span class="_ _4"> </span>; </span></div>
                 <div class="t m0 x0 h4 y1e ff1 fs1 fc0 sc0 ls0 ws0">вже<span class="ff2"> </span>здобувався<span class="ff2"> </span>раніше<span class="ff2"> </span>(навчання<span class="ff2"> </span>не<span class="ff2"> </span>завершено)<span class="ff2"> </span></div>
-                <div class="t m0 x0 h4 y1f ff1 fs1 fc0 sc0 ls0 ws0">Закінчив(ла)<span class="ff2 user-text"> <?php 
+                <div class="t m0 x0 h4 y1f ff1 fs1 fc0 sc0 ls0 ws0">Закінчив(ла)<span class="ff2 user-text">   <?php 
                 [$f,$s] = spliceLong($collage['col']);
                 echo $f;
 
-                ?></span></div>
+                ?>  </span></div>
                 <div class="t m0 xc h5 y20 ff1 fs2 fc0 sc0 ls0 ws0">(повне<span class="ff2"> </span>найменування<span class="ff2"> </span>закладу<span class="ff2"> </span>освіти,<span class="ff2"> </span>рік<span class="ff2"> </span>закінчення)</div>
-                <div class="t m0 x0 h4 y21 ff2 fs1 fc0 sc0 ls0 ws0 "><span class="user-text"><?php echo $s . ', '.$collage['year']  ?></span>. <span class="ff1">Іноземна</span> <span class="ff1">мова,</span> <span class="ff1">яку</span> <span class="ff1">вивчав(ла)</span> ____________________</div>
+                <div class="t m0 x0 h4 y21 ff2 fs1 fc0 sc0 ls0 ws0 "><span class="user-text">  <?php echo $s . ', '.$collage['year']  ?>  </span>. <span class="ff1">Іноземна</span> <span class="ff1">мова,</span> <span class="ff1">яку</span> <span class="ff1">вивчав(ла)</span> ____________________</div>
                 <div class="c x0 y22 w2 h8">
                     <div class="t m0 xd h9 y23 ff1 fs5 fc0 sc0 ls0 ws0">№<span class="ff2"> </span></div>
                     <div class="t m0 xe h9 y24 ff1 fs5 fc0 sc0 ls0 ws0">з/п</div>
@@ -257,9 +261,41 @@ $collage = mysqli_fetch_assoc($collageRes);
                 <div class="t m0 x0 h4 y2b ff1 fs1 fc0 sc0 ls0 ws0">Громадянство:<span class="ff2"> </span>Україна<span class="ff2"> <span class="_ _5"> </span>; </span>інша<span class="ff2"> </span>країна:<span class="ff2"> _________________________________________________________________</span></div>
                 <div class="t m0 x0 h4 y2c ff1 fs1 fc0 sc0 ls0 ws0">Дата<span class="ff2"> </span>і<span class="ff2"> </span>місце<span class="ff2"> </span>народження:<span class="ff2"> ______________________________________________________________________________</span></div>
                 <div class="t m0 x0 h4 y2d ff2 fs1 fc0 sc0 ls0 ws0 ">__________</div>
-                <div class="t m0 x0 h4 y2e ff1 fs1 fc0 sc0 ls0 ws0">Місце<span class="ff2"> </span>проживання:<span class="ff2"> </span>вулиця___________________,<span class="ff2"> </span>будинок<span class="ff2"> ____, </span>квартира<span class="ff2"> ____, </span>місто/селище/село<span class="ff2"> ______________, </span></div>
-                <div class="t m0 x0 h4 y2f ff1 fs1 fc0 sc0 ls0 ws0 ">,<span class="ff2"> </span>область<span class="ff2"> _____________________, </span>індекс__________,<span class="ff2"> </span>домашній,<span class="ff2"> </span>мобільний<span class="ff2"> </span>телефони<span class="ff2"> </span></div>
-                <div class="t m0 x0 h4 y30 ff2 fs1 fc0 sc0 ls0 ws0">_________<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>, <span class="_ _6"></span><span class="ff1">ел<span class="_ _6"></span>ек<span class="_ _6"></span>тр<span class="_ _6"></span>он<span class="_ _6"></span>на<span class="_ _6"></span><span class="ff2"> <span class="ff1">п<span class="_ _6"></span>ош<span class="_ _6"></span>та<span class="_ _6"></span><span class="ff2"> _<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>_</span></span></span></span></div>
+                <div class="t m0 x0 h4 y2e ff1 fs1 fc0 sc0 ls0 ws0">Місце<span class="ff2"> </span>проживання:<span class="ff2"> </span>вулиця<span class="user-text">  <?php 
+                
+                echo $addressTable['street'];
+                
+                ?>  </span>,<span class="ff2"> </span>будинок<span class="ff2"><span class="user-text">  <?php 
+                
+                echo $addressTable['house'];
+                
+                ?>  </span>, </span>квартира<span class="ff2"><span class="user-text">  <?php 
+                
+                echo $addressTable['kvart'];
+                
+                ?>  </span>, </span>місто/селище/село<span class="ff2"><span class="user-text">  <?php 
+                
+                echo $addressTable['city'];
+                
+                ?>  </span>, </span></div>
+                <div class="t m0 x0 h4 y2f ff1 fs1 fc0 sc0 ls0 ws0 ">,<span class="ff2"> </span>область<span class="ff2"><span class="user-text">  <?php 
+                
+                echo $addressTable['obl'];
+                
+                ?>  </span>, </span>індекс<span class="user-text">  <?php 
+                
+                echo $addressTable['zip'];
+                
+                ?>  </span>,<span class="ff2"> </span>домашній,<span class="ff2"> </span>мобільний<span class="ff2"> </span>телефони<span class="ff2"> </span></div>
+                <div class="t m0 x0 h4 y30 ff2 fs1 fc0 sc0 ls0 ws0"><span class="user-text">  <?php 
+                
+                echo '+380' . $infoTable['phone'];
+                
+                ?>  </span><span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>, <span class="_ _6"></span><span class="ff1">ел<span class="_ _6"></span>ек<span class="_ _6"></span>тр<span class="_ _6"></span>он<span class="_ _6"></span>на<span class="_ _6"></span><span class="ff2"> <span class="ff1">п<span class="_ _6"></span>ош<span class="_ _6"></span>та<span class="_ _6"></span><span class="ff2"> <span class="user-text">  <?php 
+                
+                echo  $infoTable['email'];
+                
+                ?>  </span></div>
                 <div class="t m0 x0 h4 y31 ff1 fs1 fc0 sc0 ls0 ws0">Додаткова<span class="ff2"> </span>інформація:<span class="ff2"> ________________________________________________________________________________</span></div>
                 <div class="t m0 x0 h4 y32 ff2 fs1 fc0 sc0 ls0 ws0 ">__________</div>
                 <div class="t m0 x0 h4 y33 ff2 fs1 fc0 sc0 ls0 ws0 ">__________</div>
@@ -271,7 +307,7 @@ $collage = mysqli_fetch_assoc($collageRes);
                 <div class="t m0 x0 h9 y39 ff1 fs5 fc0 sc0 ls0 ws0">тому<span class="ff2"> <span class="_ _2"></span></span>числі<span class="ff2"> <span class="_ _7"></span></span>в<span class="ff2"> <span class="_ _7"></span></span>Єдиній<span class="ff2"> <span class="_ _2"></span></span>державній<span class="ff2"> <span class="_ _7"></span></span>електронній<span class="ff2"> <span class="_ _2"></span></span>базі<span class="ff2"> <span class="_ _7"></span></span>з<span class="ff2"> <span class="_ _2"></span></span>питань<span class="ff2"> <span class="_ _7"></span></span>освіти,<span class="ff2"> <span class="_ _2"></span></span>а<span class="ff2"> <span class="_ _7"></span></span>також<span class="ff2"> <span class="_ _2"></span></span>інформації,<span class="ff2"> <span class="_ _7"></span></span>що<span class="ff2"> <span class="_ _2"></span></span>стосується<span class="ff2"> <span class="_ _7"></span></span>участі<span class="ff2"> <span class="_ _2"></span></span>в<span class="ff2"> <span class="_ _7"></span></span>конкурсному<span class="ff2"> <span class="_ _2"></span></span>відборі<span class="ff2"> </span></div>
                 <div class="t m0 x0 h9 y3a ff1 fs5 fc0 sc0 ls0 ws0">для<span class="ff2"> <span class="_ _2"></span></span>інформування<span class="ff2"> <span class="_ _2"></span></span>громадськості<span class="ff2"> <span class="_ _7"></span></span>про<span class="ff2"> <span class="_ _2"> </span></span>перебіг<span class="ff2"> <span class="_ _2"></span></span>вступної<span class="ff2"> <span class="_ _2"></span></span>кампанії<span class="ff2"> <span class="_ _2"></span></span>до<span class="ff2"> <span class="_ _7"></span></span>закладів<span class="ff2"> <span class="_ _2"> </span></span>освіти,<span class="ff2"> <span class="_ _2"></span></span>здійснюється<span class="ff2"> <span class="_ _2"></span></span>відповідно<span class="ff2"> <span class="_ _2"></span></span>до<span class="ff2"> <span class="_ _7"></span></span>законодавства<span class="ff2"> <span class="_ _2"> </span></span>про<span class="ff2"> </span></div>
                 <div class="t m0 x0 h9 y3b ff1 fs5 fc0 sc0 ls0 ws0">захист<span class="ff2"> </span>персональних<span class="ff2"> </span>даних.</div>
-                <div class="t m0 x0 h4 y3c ff2 fs1 fc0 sc0 ls0 ws0">«_____» __________________ 20___ <span class="ff1">року<span class="_ _8"> </span></span>_______________________________</div>
+                <div class="t m0 x0 h4 y3c ff2 fs1 fc0 sc0 ls0 ws0">  <?php echo date('d   m   Y',date_timestamp_get($date)) ?>  <span class="ff1"> року<span class="_ _8"> </span></span>_______________________________</div>
                 <div class="t m0 x3 h9 y3d ff1 fs5 fc0 sc0 ls0 ws0">(підпис)</div>
             </div>
             <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
