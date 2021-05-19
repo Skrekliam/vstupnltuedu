@@ -40,13 +40,13 @@ if (array_key_exists('closeSession', $_POST)) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./abitListTable.php">Список студентів</a>
+                            <a class="nav-link <?php echo $link===1 ?  'active' : '' ?>" aria-current="page" href="./abitListTable.php">Список студентів</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Інформація про студента</a>
+                            <a class="nav-link <?php echo $link===2 ? 'active' : '' ?>" href="#">Інформація про студента</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="handleExit()">Вихід</a>
+                            <a class="nav-link " onclick="handleExit()">Вихід</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"></a>

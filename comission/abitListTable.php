@@ -1,6 +1,7 @@
 <head>
 
     <?php
+    $link=1;
     include './admin.php';
     // session_start();
 
@@ -98,7 +99,7 @@
     function abitHandleClick(id) {
         console.log(location);
 
-        document.location.replace('/admin.php?id=' + id);
+        document.location.replace('studentInfo.php?id=' + id);
         e.preventDefault()
     }
 </script>

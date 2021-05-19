@@ -1,9 +1,11 @@
 <div class="container">
     <?php
+    $link=2;
+    require './admin.php';
 
     function sqlStr($str)
     {
-        require './connection.php';
+        require '../connection.php';
         $result = mysqli_query($con, $str);
         return $result;
     }
