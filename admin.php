@@ -1,3 +1,21 @@
+
+<?php
+var_dump($_SESSION);
+session_start();
+
+if (!$_SESSION["login_user"]) {
+    header("location: login.php");
+}
+
+
+if (array_key_exists('closeSession', $_POST)) {
+    echo 'clear';
+    session_destroy();
+    header("location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,19 +155,6 @@
 
 
 </html>
-<?php
-session_start();
-
-if (!$_SESSION["login_user"]) {
-    header("location: login.php");
-}
-
-
-if (array_key_exists('closeSession', $_POST)) {
-    echo 'clear';
-    session_destroy();
-    header("location: login.php");
-}
 // var_dump($_SESSION);
 // var_dump($_POST);
 
@@ -159,4 +164,3 @@ if (array_key_exists('closeSession', $_POST)) {
 
 
 
-?>
