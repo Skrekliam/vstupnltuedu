@@ -1,14 +1,14 @@
 <?php
 
 session_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 if (!$_SESSION["login_user"]) {
     header("location: http://".$_SERVER['HTTP_HOST']."/comission");
 }
 
 
 if (array_key_exists('closeSession', $_POST)) {
-    echo 'clear';
+    // echo 'clear';
     session_destroy();
     header("location: comission");
 }
