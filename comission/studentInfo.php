@@ -141,7 +141,7 @@
     <tr><th>Код</th><th>Назва</th></tr>';
     while ($examsTable = mysqli_fetch_assoc($examsTableRes)) {
         echo '
-        <tr><td onclick="changeField("not","working")">' . $examsTable['specid'] . '</td><td>' . switchSpecialty($examsTable['specid']) . '</td></tr>';
+        <tr onclick="changeField(`Не працює`,`Допишіть вручну`)"><td >' . $examsTable['specid'] . '</td><td>' . switchSpecialty($examsTable['specid']) . '</td></tr>';
     }
 
     echo '</table></div>';
@@ -163,8 +163,8 @@
                 <td id="chTable"></td>
                 <td id="chField"></td>
                 <td id="id"><?php echo $id ?></td>
-                <td><input id="chInput" type="text" required></td>
-                <td><button id="update" type="button">Оновити</button></td>
+                <td><input id="chInput" class="form-control" type="text" required></td>
+                <td><button id="update" class="btn btn-outline-success" type="button">Оновити</button></td>
             </tr>
         </tbody>
 

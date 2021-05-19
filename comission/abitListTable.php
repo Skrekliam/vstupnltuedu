@@ -38,8 +38,8 @@
                     <p>Пошук за ID</p>
                     <div class="input-group">
                         <span class="input-group-text">ID:</span>
-                        <input type="text" id="ID" class="form-control" />
-                        <button type="button" class="btn btn-outline-primary" onclick="handeID()">Пошук</button>
+                        <input type="text" id="ID" onkeydown="handleEnter(event)" class="form-control" />
+                        <button type="button" class="btn btn-outline-primary" onclick="handleID()">Пошук</button>
                     </div>
 
                 </form>
@@ -104,20 +104,23 @@
 
 ?>
 <script>
+    
+
     function abitHandleClick(id) {
         console.log(location);
 
         document.location.replace('studentInfo.php?id=' + id);
         e.preventDefault()
     }
-    function handeID(){
-        let id = document.querySelector("#ID").value.replace(/[^0-9]/g,'');
+
+    function handleID() {
+        let id = document.querySelector("#ID").value.replace(/[^0-9]/g, '');
         document.location.replace('studentInfo.php?id=' + id);
     }
     window.onload = () => {
-        let table  = document.getElementsByTagName('table')[0];
+        let table = document.getElementsByTagName('table')[0];
         const ls = localStorage;
-        if(ls.getItem('tableBack')==='true'){
+        if (ls.getItem('tableBack') === 'true') {
             table.classList.add("table-dark");
             // table.classList.toggle("table-striped");
 
@@ -127,4 +130,11 @@
         }
     }
 
+    function handleEnter(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleID();
+        }
+
+    }
 </script>
