@@ -64,10 +64,8 @@ if (array_key_exists('closeSession', $_POST)) {
 <script>
     window.onload = () => {
         let time;
-        console.log(time);
         setInterval(() => {
             time = new Date().toLocaleTimeString();
-            console.log(time);
             document.querySelector('#time').innerHTML = time;
         }, 1000)
         const ls = localStorage;
