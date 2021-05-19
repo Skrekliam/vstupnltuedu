@@ -198,19 +198,27 @@
             document.querySelector('#chField').innerHTML = fieldName;
         }
 
-        
-            $('#update').click(() => {
-                let tbl = document.querySelector('#chTable').innerHTML;
-                let fld = document.querySelector('#chField').innerHTML;
-                let id = document.querySelector('#id').innerHTML;
-                let newVal = document.querySelector('#chInput').value;
 
-                $.ajax({
-                    url: './updateField.php?table='+ tbl + '&field='+ fld + '&id='+id+'&val='+newVal
-                });
+        $('#update').click(() => {
+            let tbl = document.querySelector('#chTable').innerHTML;
+            let fld = document.querySelector('#chField').innerHTML;
+            let id = document.querySelector('#id').innerHTML;
+            let newVal = document.querySelector('#chInput').value;
 
+            $.ajax({
+                url: './updateField.php',
+                data: {
+                    table: tbl,
+                    field: fld,
+                    id: id,
+                    val: newVal
+                },
+                success: function(str) {
+                    alert(str);
+                }
             });
-        
+
+        });
     </script>
 
 
