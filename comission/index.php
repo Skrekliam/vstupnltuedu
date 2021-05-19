@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_user'] = $myusername;
         
 //http://".$_SERVER['HTTP_HOST']."
-        header("location: ./abitListTable.php");
+        header("location: vstup.nltu.edu.ua/comission/abitListTable.php");
     } else {
         $error = "Your Login Name or Password is invalid";
         echo $error;
