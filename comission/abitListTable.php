@@ -1,7 +1,7 @@
 <head>
 
     <?php
-    $link=1;
+    $link = 1;
     include './admin.php';
     // session_start();
 
@@ -23,20 +23,28 @@
         <caption>
             Виберіть кількість записів
             <div class="col-xl-3">
-            <form action="abitListTable.php" method="post">
-                <div class="input-group">
+                <form action="abitListTable.php" method="post">
+                    <div class="input-group">
 
-                    <select name="count" class="form-select">
-                        <option value="5" selected>5</option>
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="all">Всі</option>
-                    </select>
-                    <button type="submit" class="btn btn-outline-primary">Вивід</button>
-                </div>
-                </div>
-            </form>
+                        <select name="count" class="form-select">
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="all">Всі</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-primary">Вивід</button>
+                    </div>
+                    <p>Пошук за ID</p>
+                    <div class="input-group">
+                        <span class="input-group-text">ID:</span>
+                        <input type="text" id="ID" class="form-control" />
+                        <button type="button" class="btn btn-outline-primary" onclick="handeID()">Пошук</button>
+                    </div>
+
+                </form>
+            </div>
+
         </caption>
         <thead>
             <tr>
@@ -101,5 +109,9 @@
 
         document.location.replace('studentInfo.php?id=' + id);
         e.preventDefault()
+    }
+    function handeID(){
+        let id = document.querySelector("#ID").value.replace(/[^0-9]/g,'');
+        document.location.replace('studentInfo.php?id=' + id);
     }
 </script>
