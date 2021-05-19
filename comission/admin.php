@@ -43,7 +43,7 @@ if (array_key_exists('closeSession', $_POST)) {
                             <a class="nav-link <?php echo $link===1 ?  'active' : '' ?>" aria-current="page" href="./abitListTable.php">Список студентів</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo $link===2 ? 'active' : '' ?>" href="#">Інформація про студента</a>
+                            <a class="nav-link <?php echo $link===2 ? 'active' : '' ?>" href="#">Інформація про студента <span class="badge bg-secondary"><?php echo $_GET['id'] ?></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " onclick="handleExit()">Вихід</a>

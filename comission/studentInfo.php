@@ -22,9 +22,9 @@
     $abitTableSql = "SELECT * FROM `abiturients` where `idAbit`='$id'";
     $abitTableRes = sqlStr($abitTableSql);
 
-
+    echo "<div class='tables'>";
     $abitTable = mysqli_fetch_assoc($abitTableRes);
-    echo '<table class="table caption-top"><caption>Абітурієнт</caption>
+    echo '<table class="table caption-top table-fit table-bordered"><caption>Абітурієнт</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
     <tr><td>Прізвище</td><td>' . $abitTable['Surname'] . '</td></tr>
     <tr><td>Імя</td><td>' . $abitTable['Name'] . '</td></tr>
@@ -41,7 +41,7 @@
 
 
     $addressTable = mysqli_fetch_assoc($addressTableRes);
-    echo '<table class="table caption-top"><caption>Адреса</caption>
+    echo '<table class="table caption-top table-fit table-bordered"><caption>Адреса</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
     <tr><td>Вулиця</td><td>' . $addressTable['street'] . '</td></tr>
     <tr><td>Будинок</td><td>' . $addressTable['house'] . '</td></tr>
@@ -60,7 +60,7 @@
 
 
     $infoTable = mysqli_fetch_assoc($infoTableRes);
-    echo '<table class="table caption-top"><caption>Інформація</caption>
+    echo '<table class="table caption-top table-fit table-bordered"><caption>Інформація</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
     <tr><td>Оригінал документів</td><td>' . $infoTable['isOriginDocs'] . '</td></tr>
     <tr><td>Номер телефону</td><td>' . $infoTable['phone'] . '</td></tr>
@@ -78,14 +78,14 @@
 
 
 
-    echo '<table class="table caption-top"><caption>Екзамени</caption>
+    echo '<table class="table caption-top table-fit table-bordered"><caption>Екзамени</caption>
     <tr><th>Поле</th><th>Значення</th></tr>';
     while ($examsTable = mysqli_fetch_assoc($examsTableRes)) {
         echo '
         <tr><td>Екзамен по </td><td>' . $examsTable['specid'] . '</td></tr>';
     }
 
-    echo '</table>';
+    echo '</table></div>';
     
     ?>
     <!-- 

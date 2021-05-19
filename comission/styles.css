@@ -4,3 +4,11 @@ tr:hover {
   transition: 0.5s ease-in-out;
   transform: scale(1.01);
 }
+.table-fit {
+  width: 1px;
+  margin: 15;
+}
+.tables{
+  display: flex;
+  
+}
