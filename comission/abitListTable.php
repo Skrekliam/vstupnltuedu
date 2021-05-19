@@ -19,7 +19,7 @@
 
 
 <div class="container">
-    <table class="abitList table caption-top">
+    <table class="abitList table caption-top table-lg">
         <caption>
             Виберіть кількість записів
             <div class="col-xl-3">
@@ -54,7 +54,7 @@
                 <th scope="col">По батькові</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-striped">
             <?php
 
 
@@ -114,4 +114,17 @@
         let id = document.querySelector("#ID").value.replace(/[^0-9]/g,'');
         document.location.replace('studentInfo.php?id=' + id);
     }
+    window.onload = () => {
+        let table  = document.getElementsByTagName('table')[0];
+        const ls = localStorage;
+        if(ls.getItem('tableBack')==='true'){
+            table.classList.add("table-dark");
+            // table.classList.toggle("table-striped");
+
+        } else {
+            table.classList.remove("table-dark");
+            // table.classList.toggle("table-striped");
+        }
+    }
+
 </script>

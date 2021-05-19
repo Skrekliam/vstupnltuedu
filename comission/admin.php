@@ -46,6 +46,9 @@ if (array_key_exists('closeSession', $_POST)) {
                             <a class="nav-link <?php echo $link===2 ? 'active' : '' ?>" href="#">Інформація про студента <span class="badge bg-secondary"><?php echo $_GET['id'] ?></span></a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link <?php echo $link===3 ? 'active' : '' ?>" href="./settings.php">Налаштування</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link " onclick="handleExit()">Вихід</a>
                         </li>
                         <li class="nav-item">
@@ -60,11 +63,18 @@ if (array_key_exists('closeSession', $_POST)) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script>
     window.onload = () => {
+        const ls = localStorage;
+        if (!ls.getItem('tableBig')) 
+            ls.setItem('tableBig', 'false');
+        if (!ls.getItem('tableBack')) 
+        ls.setItem('tableBack', 'false');
+
         let time;
         setInterval(() => {
             time = new Date().toLocaleTimeString();
             document.querySelector('#time').innerHTML = time;
         }, 1000)
+
     }
 
     const handleExit = () => {
