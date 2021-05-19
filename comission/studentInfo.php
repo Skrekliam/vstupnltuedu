@@ -1,7 +1,24 @@
 <div class="container">
+
+
+
+
     <?php
     $link = 2;
     require './admin.php';
+
+    ?>
+
+    <div class="form-check form-switch">
+        <input class="form-check-input" onclick="trigBig()" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Великі таблиці</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" onclick="trigBack()" type="checkbox" id="flexSwitchCheckDefault1">
+        <label class="form-check-label"  for="flexSwitchCheckDefault1">Темний фон</label>
+    </div>
+
+    <?php
 
     function switchformaNavch($id)
     {
@@ -30,7 +47,8 @@
         }
     }
 
-    function switchInstitute($id){
+    function switchInstitute($id)
+    {
         $instituteTableSql = "SELECT * FROM `institutes` where `idInstitutes`='$id'";
         $instituteTableRes = sqlStr($instituteTableSql);
 
@@ -39,7 +57,8 @@
         return $instituteTable['InstituteNameUk'];
     }
 
-    function switchSpecialty($id){
+    function switchSpecialty($id)
+    {
         $specialtyTableSql = "SELECT * FROM `specialty` where `idSpecialty`='$id'";
         $specialtyTableRes = sqlStr($specialtyTableSql);
 
@@ -68,9 +87,9 @@
     $abitTableSql = "SELECT * FROM `abiturients` where `idAbit`='$id'";
     $abitTableRes = sqlStr($abitTableSql);
 
-    echo "<div class='tables'>";
+    echo "<div class=' tables'>";
     $abitTable = mysqli_fetch_assoc($abitTableRes);
-    echo '<table class="table caption-top table-fit table-bordered"><caption>Абітурієнт</caption>
+    echo '<table class=" table caption-top table-fit table-bordered"><caption>Абітурієнт</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
     <tr><td>Прізвище</td><td>' . $abitTable['Surname'] . '</td></tr>
     <tr><td>Імя</td><td>' . $abitTable['Name'] . '</td></tr>
@@ -128,7 +147,7 @@
     <tr><th>Код</th><th>Назва</th></tr>';
     while ($examsTable = mysqli_fetch_assoc($examsTableRes)) {
         echo '
-        <tr><td>'.$examsTable['specid'].'</td><td>' . switchSpecialty($examsTable['specid']) . '</td></tr>';
+        <tr><td>' . $examsTable['specid'] . '</td><td>' . switchSpecialty($examsTable['specid']) . '</td></tr>';
     }
 
     echo '</table></div>';
@@ -139,6 +158,11 @@ echo '<table><caption>Абітурієнт</caption>
     <tr><th></th><th></th></tr>
     <tr><td></td><td></td></tr>
     </table>'; -->
+
+    <script>
+
+
+    </script>
 
 
 </div>

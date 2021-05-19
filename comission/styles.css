@@ -5,10 +5,11 @@ tr:hover {
   transform: scale(1.01);
 }
 .table-fit {
-  width: 1px;
+  /* width: 1px; */
   margin: 15;
 }
 .tables{
   display: flex;
+  max-width: 100%; 
   
 }
