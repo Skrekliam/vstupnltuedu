@@ -138,6 +138,13 @@
             $insExam = "INSERT INTO exams(`idexams`,`specid`) values ($id,$spec[$i])";
             sql($insExam, "екзамен на спеціальність $spec[$i]");
         }
+
+        $inscollageinfo = "INSERT INTO collageinfo(`idcollageinfo`,`obl`,`col`,`year`) VALUES ($id,'$prevStudy','$prevCol','$yearEnd')";
+        sql($inscollageinfo, "коледж");
+        
+
+
+
         echo '</div>';
 
 
