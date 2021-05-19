@@ -10,7 +10,7 @@ $str = "UPDATE `$tbl` SET `$fld` = '$val' WHERE `$id`=$idU";
 
 $result = mysqli_query($con, $str);
 if($result){
-    echo $str;
+    echo 'Дані записані';
 } else {
-    echo 'err ' . $str;
+    echo 'Помилка ' . mysqli_error($result);
 }

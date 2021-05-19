@@ -25,7 +25,7 @@
                 return 'Вечірня';
                 break;
             default:
-                return 'Помилка';
+                return '-';
                 break;
         }
     }
@@ -34,8 +34,10 @@
     {
         if ($id == 0) {
             return 'Бакалавр';
-        } else {
+        } else if($id == 1) {
             return 'Магістр';
+        } else {
+            return '-';
         }
     }
 
@@ -215,6 +217,7 @@
                 },
                 success: function(str) {
                     alert(str);
+                    location.reload();
                 }
             });
 
