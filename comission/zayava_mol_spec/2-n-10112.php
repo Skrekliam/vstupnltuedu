@@ -78,7 +78,11 @@ function sqlStr($str)
     $result = mysqli_query($con, $str);
     return $result;
 }
-$id=137;
+
+
+$id = $_GET['id'];
+
+
 // Таблиця абітурієнт
 $abitTableSql = "SELECT * FROM `abiturients` where `idabiturients`='$id'";
 $abitTableRes = sqlStr($abitTableSql);
@@ -109,6 +113,8 @@ $collageRes = sqlStr($collageSql);
 
 
 $collage = mysqli_fetch_assoc($collageRes);
+
+
 
 
 
@@ -162,7 +168,12 @@ $collage = mysqli_fetch_assoc($collageRes);
                  ?>  </span></div>
                 <div class="t m0 x5 h5 ya ff1 fs2 fc0 sc0 ls0 ws0">(прізвище,<span class="ff2"> </span>ім’я,<span class="ff2"> </span>по<span class="ff2"> </span>батькові)</div>
                 <div class="t m0 x5 h6 yb ff3 fs3 fc0 sc0 ls0 ws0">ЗАЯВА</div>
-                <div class="t m0 x0 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Прошу<span class="ff2"> </span>допустити<span class="ff2"> </span>мене<span class="ff2"> </span>до<span class="ff2"> </span>участі<span class="ff2"> </span>в<span class="ff2"> </span>конкурсному<span class="ff2"> </span>відборі<span class="ff2"> </span>на<span class="ff2"> </span>навчання<span class="ff2"> </span>за<span class="ff2 user-text"> <!--formaNavch-->      <?php echo switchformaNavch($infoTable['formaNavch']) ?>      </span>формою<span class="ff2"> </span>здобуття<span class="ff2"> </span>освіти</div>
+                <div class="t m0 x0 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Прошу<span class="ff2"> </span>допустити<span class="ff2"> </span>мене<span class="ff2"> </span>до<span class="ff2"> </span>участі<span class="ff2"> </span>в<span class="ff2"> </span>конкурсному<span class="ff2"> </span>відборі<span class="ff2"> </span>на<span class="ff2"> </span>навчання<span class="ff2"> </span>за<span class="ff2 user-text"> <!--formaNavch--><?php
+                 
+                 echo switchformaNavch($infoTable['formaNavch']) 
+                 
+                 ?> </span> формою<span class="ff2">
+</span>здобуття<span class="ff2"> </span>освіти</div>
                 <div class="t m0 x6 h5 yd ff2 fs2 fc0 sc0 ls0 ws0"> <span class="ff1">(денна,</span> <span class="ff1">заочна</span> <span class="ff1">(дистанційна),</span> <span class="ff1">вечірня)</span></div>
                 <div class="t m0 x0 h4 ye ff1 fs1 fc0 sc0 ls0 ws0">для<span class="ff2"> </span>здобуття<span class="ff2"> </span>ступеня<span class="ff2 user-text"><!-- stupin -->   <?php
                 // stupin osv
