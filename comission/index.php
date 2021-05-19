@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($count == 1) {
         $_SESSION['login_user'] = $myusername;
         
-
-        header("location: http://".$_SERVER['HTTP_HOST']."/comission/abitListTable.php");
+//http://".$_SERVER['HTTP_HOST']."
+        header("location: /comission/abitListTable.php");
     } else {
         $error = "Your Login Name or Password is invalid";
     echo 'he41';
