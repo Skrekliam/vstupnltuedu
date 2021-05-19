@@ -34,7 +34,7 @@
     {
         if ($id == 0) {
             return 'Бакалавр';
-        } else if($id == 1) {
+        } else if ($id == 1) {
             return 'Магістр';
         } else {
             return '-';
@@ -148,27 +148,40 @@
 
     ?>
 
+    <div class="container">
+        <table class="table caption-top table-bordered">
+            <caption>Зміна значення</caption>
+            <thead>
+                <th>Таблиця</th>
+                <th>Поле</th>
+                <th>Індекс</th>
+                <th>Нове значення</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="chTable"></td>
+                    <td id="chField"></td>
+                    <td id="id"><?php echo $id ?></td>
+                    <td><input id="chInput" class="form-control" type="text" required></td>
+                    <td><button id="update" class="btn btn-outline-success" type="button">Оновити</button></td>
+                </tr>
+            </tbody>
 
-    <table class="table caption-top table-bordered">
-        <caption>Зміна значення</caption>
-        <thead>
-            <th>Таблиця</th>
-            <th>Поле</th>
-            <th>Індекс</th>
-            <th>Нове значення</th>
-            <th></th>
-        </thead>
-        <tbody>
-            <tr>
-                <td id="chTable"></td>
-                <td id="chField"></td>
-                <td id="id"><?php echo $id ?></td>
-                <td><input id="chInput" class="form-control" type="text" required></td>
-                <td><button id="update" class="btn btn-outline-success" type="button">Оновити</button></td>
-            </tr>
-        </tbody>
+        </table>
+    </div>
 
-    </table>
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Друк заяви</h5>
+            <p class="card-text">Заява бакалавр на молодшого спеціаліста.</p>
+            <a href="#" class="btn btn-primary w-50">Друк</a>
+        </div>
+    </div>
+
+
+
+
 
     <script>
         window.onload = () => {
