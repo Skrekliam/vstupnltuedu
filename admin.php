@@ -1,8 +1,8 @@
 
 <?php
-var_dump($_SESSION);
-session_start();
 
+session_start();
+var_dump($_SESSION);
 if (!$_SESSION["login_user"]) {
     header("location: login.php");
 }
@@ -155,12 +155,3 @@ if (array_key_exists('closeSession', $_POST)) {
 
 
 </html>
-// var_dump($_SESSION);
-// var_dump($_POST);
-
-
-
-
-
-
-
