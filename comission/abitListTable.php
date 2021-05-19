@@ -63,7 +63,7 @@
 
             require '../connection.php';
             $limit = $_POST['count'] ? ($_POST['count'] === 'all' ? '' : 'LIMIT ' . $_POST['count']) : 'LIMIT 5';
-            $sql = "SELECT * FROM `abiturients` ORDER BY `idAbit` DESC $limit";
+            $sql = "SELECT * FROM `abiturients` ORDER BY `idabiturients` DESC $limit";
             // echo $sql;
             $result = mysqli_query($con, $sql);
 
@@ -77,8 +77,8 @@
                 while ($row = mysqli_fetch_assoc($result)) {
 
 
-                    echo   '<tr onClick="abitHandleClick(' . $row['idAbit'] . ')">
-                                            <th scope="row">' . $row['idAbit'] . '</th>
+                    echo   '<tr onClick="abitHandleClick(' . $row['idabiturients'] . ')">
+                                            <th scope="row">' . $row['idabiturients'] . '</th>
                                             <td>' . $row['Surname'] . '</td>
                                             <td>' . $row['Name'] . '</td>
                                             <td>' . $row['FatherName'] . '</td>

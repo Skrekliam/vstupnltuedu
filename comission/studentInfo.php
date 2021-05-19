@@ -76,7 +76,7 @@
     // var_dump($result);
     // echo $_POST['count'];
     // Таблиця абітурієнт
-    $abitTableSql = "SELECT * FROM `abiturients` where `idAbit`='$id'";
+    $abitTableSql = "SELECT * FROM `abiturients` where `idabiturients`='$id'";
     $abitTableRes = sqlStr($abitTableSql);
 
     echo "<div id='bigSwitch' class=' '>";
@@ -112,7 +112,7 @@
 
     // Інформація про абіт
 
-    $infoTableSql = "SELECT * FROM `infoabit` where `idInfoAbit`='$id'";
+    $infoTableSql = "SELECT * FROM `infoabit` where `idinfoabit`='$id'";
     $infoTableRes = sqlStr($infoTableSql);
 
 

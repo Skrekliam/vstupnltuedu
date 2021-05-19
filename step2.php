@@ -110,14 +110,14 @@
 
 
 
-        $select = "SELECT * FROM `abiturients` where Surname='$Surname' and Name='$Name' and FatherName='$FatherName' ORDER BY `idAbit` DESC LIMIT 1";
+        $select = "SELECT * FROM `abiturients` where Surname='$Surname' and Name='$Name' and FatherName='$FatherName' ORDER BY `idabiturients` DESC LIMIT 1";
 
         // all data abiturient
         $req = sql($select, 'особовий номер');
 
         $f = mysqli_fetch_array($req);
 
-        $id = $f['idAbit'];
+        $id = $f['idabiturients'];
         // print_r('id here ' . $id);
 
         $insAdd = "INSERT INTO address(`idaddress`,`street`,`house`,`kvart`,`city`,`obl`,`zip`) values ($id,'$street','$house','$kvart','$city','$obl','$zip')";
@@ -126,7 +126,7 @@
 
 
 
-        $insInfAbit = "INSERT INTO infoabit(`idInfoAbit`,`isOriginDocs`,`phone`,`email`,`formaNavch`) values ($id,0,'$phone','$email','$formaNavch')";
+        $insInfAbit = "INSERT INTO infoabit(`idinfoabit`,`isOriginDocs`,`phone`,`email`,`formaNavch`) values ($id,0,'$phone','$email','$formaNavch')";
 
         sql($insInfAbit, "інформацію");
 
