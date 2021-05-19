@@ -9,14 +9,6 @@
 
     ?>
 
-    <div class="form-check form-switch">
-        <input class="form-check-input" onclick="trigBig()" type="checkbox" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Великі таблиці</label>
-    </div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" onclick="trigBack()" type="checkbox" id="flexSwitchCheckDefault1">
-        <label class="form-check-label"  for="flexSwitchCheckDefault1">Темний фон</label>
-    </div>
 
     <?php
 
@@ -87,15 +79,15 @@
     $abitTableSql = "SELECT * FROM `abiturients` where `idAbit`='$id'";
     $abitTableRes = sqlStr($abitTableSql);
 
-    echo "<div class=' tables'>";
+    echo "<div id='bigSwitch' class=' '>";
     $abitTable = mysqli_fetch_assoc($abitTableRes);
     echo '<table class=" table caption-top table-fit table-bordered"><caption>Абітурієнт</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
-    <tr><td>Прізвище</td><td>' . $abitTable['Surname'] . '</td></tr>
-    <tr><td>Імя</td><td>' . $abitTable['Name'] . '</td></tr>
-    <tr><td>По батькові</td><td>' . $abitTable['FatherName'] . '</td></tr>
-    <tr><td>Ступінь навчання</td><td>' . switchisBachelour($abitTable['isBachelour']) . '</td></tr>
-    <tr><td>Інститут</td><td>' . switchInstitute($abitTable['Institute']) . '</td></tr>
+    <tr  onclick="changeField(`abiturients`,`Surname`)"><td>Прізвище</td><td>' . $abitTable['Surname'] . '</td></tr>
+    <tr  onclick="changeField(`abiturients`,`Name`)"><td>Імя</td><td>' . $abitTable['Name'] . '</td></tr>
+    <tr  onclick="changeField(`abiturients`,`FatherName`)"><td>По батькові</td><td>' . $abitTable['FatherName'] . '</td></tr>
+    <tr  onclick="changeField(`abiturients`,`abitTable`)"><td>Ступінь навчання</td><td>' . switchisBachelour($abitTable['isBachelour']) . '</td></tr>
+    <tr  onclick="changeField(`abiturients`,`Institute`)"><td>Інститут</td><td>' . switchInstitute($abitTable['Institute']) . '</td></tr>
 
     </table>';
 
@@ -108,12 +100,12 @@
     $addressTable = mysqli_fetch_assoc($addressTableRes);
     echo '<table class="table caption-top table-fit table-bordered"><caption>Адреса</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
-    <tr><td>Вулиця</td><td>' . $addressTable['street'] . '</td></tr>
-    <tr><td>Будинок</td><td>' . $addressTable['house'] . '</td></tr>
-    <tr><td>Квартира</td><td>' . $addressTable['kvart'] . '</td></tr>
-    <tr><td>Місто</td><td>' . $addressTable['city'] . '</td></tr>
-    <tr><td>Область</td><td>' . $addressTable['obl'] . '</td></tr>
-    <tr><td>Індекс</td><td>' . $addressTable['zip'] . '</td></tr>
+    <tr onclick="changeField(`address`,`street`)"><td>Вулиця</td><td>' . $addressTable['street'] . '</td></tr>
+    <tr onclick="changeField(`address`,`house`)"><td>Будинок</td><td>' . $addressTable['house'] . '</td></tr>
+    <tr onclick="changeField(`address`,`kvart`)"><td>Квартира</td><td>' . $addressTable['kvart'] . '</td></tr>
+    <tr onclick="changeField(`address`,`city`)"><td>Місто</td><td>' . $addressTable['city'] . '</td></tr>
+    <tr onclick="changeField(`address`,`obl`)"><td>Область</td><td>' . $addressTable['obl'] . '</td></tr>
+    <tr onclick="changeField(`address`,`zip`)"><td>Індекс</td><td>' . $addressTable['zip'] . '</td></tr>
 
     </table>';
 
@@ -127,10 +119,10 @@
     $infoTable = mysqli_fetch_assoc($infoTableRes);
     echo '<table class="table caption-top table-fit table-bordered"><caption>Інформація</caption>
     <tr><th>Поле</th><th>Значення</th></tr>
-    <tr><td>Оригінал документів</td><td>' . $infoTable['isOriginDocs'] . '</td></tr>
-    <tr><td>Номер телефону</td><td>' . $infoTable['phone'] . '</td></tr>
-    <tr><td>Email</td><td>' . $infoTable['email'] . '</td></tr>
-    <tr><td>Форма навчання</td><td>' . switchformaNavch($infoTable['formaNavch'])  . '</td></tr>
+    <tr  onclick="changeField(`infoabit`,`isOriginDocs`)"><td>Оригінал документів</td><td>' . $infoTable['isOriginDocs'] . '</td></tr>
+    <tr  onclick="changeField(`infoabit`,`phone`)"><td>Номер телефону</td><td>' . $infoTable['phone'] . '</td></tr>
+    <tr  onclick="changeField(`infoabit`,`email`)"><td>Email</td><td>' . $infoTable['email'] . '</td></tr>
+    <tr  onclick="changeField(`infoabit`,`formaNavch`)"><td>Форма навчання</td><td>' . switchformaNavch($infoTable['formaNavch'])  . '</td></tr>
 
     </table>';
 
@@ -147,21 +139,78 @@
     <tr><th>Код</th><th>Назва</th></tr>';
     while ($examsTable = mysqli_fetch_assoc($examsTableRes)) {
         echo '
-        <tr><td>' . $examsTable['specid'] . '</td><td>' . switchSpecialty($examsTable['specid']) . '</td></tr>';
+        <tr><td onclick="changeField("not","working")">' . $examsTable['specid'] . '</td><td>' . switchSpecialty($examsTable['specid']) . '</td></tr>';
     }
 
     echo '</table></div>';
 
     ?>
-    <!-- 
-echo '<table><caption>Абітурієнт</caption>
-    <tr><th></th><th></th></tr>
-    <tr><td></td><td></td></tr>
-    </table>'; -->
+
+
+    <table class="table caption-top table-bordered">
+        <caption>Зміна значення</caption>
+        <thead>
+            <th>Таблиця</th>
+            <th>Поле</th>
+            <th>Індекс</th>
+            <th>Нове значення</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="chTable"></td>
+                <td id="chField"></td>
+                <td id="id"><?php echo $id ?></td>
+                <td><input id="chInput" type="text" required></td>
+                <td><button id="update" type="button">Оновити</button></td>
+            </tr>
+        </tbody>
+
+    </table>
 
     <script>
+        window.onload = () => {
+            let tables = document.getElementsByTagName('table');
+            const ls = localStorage;
+            console.log(tables);
+            for (table of tables) {
 
 
+                if (ls.getItem('tableBack') === 'true') {
+                    table.classList.add("table-dark");
+
+                } else {
+                    table.classList.remove("table-dark");
+                }
+
+            };
+            const bigSel = document.querySelector("#bigSwitch");
+            if (ls.getItem('tableBig') === 'false') {
+                bigSel.classList.add("tables");
+
+            } else {
+                bigSel.classList.remove("tables");
+            }
+        }
+
+        function changeField(tableName, fieldName) {
+            document.querySelector('#chTable').innerHTML = tableName;
+            document.querySelector('#chField').innerHTML = fieldName;
+        }
+
+        
+            $('#update').click(() => {
+                let tbl = document.querySelector('#chTable').innerHTML;
+                let fld = document.querySelector('#chField').innerHTML;
+                let id = document.querySelector('#id').innerHTML;
+                let newVal = document.querySelector('#chInput').value;
+
+                $.ajax({
+                    url: './updateField.php?table='+ tbl + '&field='+ fld + '&id='+id+'&val='+newVal
+                });
+
+            });
+        
     </script>
 
 
