@@ -11,7 +11,7 @@
     
     
     
-    include('./bootstrapInfo.php'); ?>
+    include('../bootstrapInfo.php'); ?>
 </head>
 
 
@@ -88,8 +88,10 @@
 
 ?>
 <script>
-    function handleClick(id){
+    function abitHandleClick(id){
         console.log(location);
+        
         document.location.replace('/admin.php?id='+id);
+        e.preventDefault()
     }
 </script>

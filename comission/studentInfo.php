@@ -8,7 +8,7 @@
         return $result;
     }
     var_dump($_GET);
-    require './bootstrapInfo.php';
+    require '../bootstrapInfo.php';
 
     $id = $_GET['id'];
 
