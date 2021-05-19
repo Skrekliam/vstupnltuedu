@@ -1,3 +1,37 @@
+<?php
+session_start();
+if($_SESSION){
+    session_unset();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // username and password sent from form 
+    require "../connection.php";
+    $myusername = mysqli_real_escape_string($con, $_POST['login']);
+    $mypassword = mysqli_real_escape_string($con, $_POST['password']);
+    
+    $sql = "SELECT idadmins FROM admins WHERE adminslogin = '$myusername' and adminspassword = '$mypassword'";
+    $result = mysqli_query($con, $sql);
+    // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    // $active = $row['active'];
+
+    $count = mysqli_num_rows($result);
+    // If result matched $myusername and $mypassword, table row must be 1 row
+    // echo 'her2 ' . $count;
+
+    if ($count == 1) {
+        $_SESSION['login_user'] = $myusername;
+        
+//http://".$_SERVER['HTTP_HOST']."
+        header("location: http://www.vstup.nltu.edu.ua/comission/abitListTable.php");
+        
+    } else {
+        $error = "Your Login Name or Password is invalid";
+        echo $error;
+
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,39 +67,7 @@
 
 </html>
 
-<?php
-session_start();
-if($_SESSION){
-    session_unset();
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // username and password sent from form 
-    require "../connection.php";
-    $myusername = mysqli_real_escape_string($con, $_POST['login']);
-    $mypassword = mysqli_real_escape_string($con, $_POST['password']);
-    
-    $sql = "SELECT idadmins FROM admins WHERE adminslogin = '$myusername' and adminspassword = '$mypassword'";
-    $result = mysqli_query($con, $sql);
-    // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    // $active = $row['active'];
-
-    $count = mysqli_num_rows($result);
-    // If result matched $myusername and $mypassword, table row must be 1 row
-    echo 'her2 ' . $count;
-
-    if ($count == 1) {
-        $_SESSION['login_user'] = $myusername;
-        
-//http://".$_SERVER['HTTP_HOST']."
-        header("location: vstup.nltu.edu.ua/comission/abitListTable.php");
-    } else {
-        $error = "Your Login Name or Password is invalid";
-        echo $error;
-
-    }
-}
 
 
 
-?>
+
