@@ -1,4 +1,85 @@
-<?php 
+<?php
+
+function switchformaNavch($id)
+    {
+        switch ($id) {
+            case 0:
+                return 'Денна';
+                break;
+            case 1:
+                return 'Заочна(дистанційна)';
+                break;
+            case 2:
+                return 'Вечірня';
+                break;
+            default:
+                return '-';
+                break;
+        }
+    }
+
+    function switchisBachelour($id)
+    {
+        if ($id == 0) {
+            return 'Бакалавр';
+        } else if ($id == 1) {
+            return 'Магістр';
+        } else {
+            return '-';
+        }
+    }
+
+    function switchInstitute($id)
+    {
+        $instituteTableSql = "SELECT * FROM `institutes` where `idInstitutes`='$id'";
+        $instituteTableRes = sqlStr($instituteTableSql);
+
+        $instituteTable = mysqli_fetch_assoc($instituteTableRes);
+
+        return $instituteTable['InstituteNameUk'];
+    }
+
+    function switchSpecialty($id)
+    {
+        $specialtyTableSql = "SELECT * FROM `specialty` where `idSpecialty`='$id'";
+        $specialtyTableRes = sqlStr($specialtyTableSql);
+
+        $specialtyTable = mysqli_fetch_assoc($specialtyTableRes);
+
+        return $specialtyTable['specialtyNameUk'];
+    }
+
+
+function sqlStr($str)
+{
+    require '../../connection.php';
+    $result = mysqli_query($con, $str);
+    return $result;
+}
+$id=130;
+// Таблиця абітурієнт
+$abitTableSql = "SELECT * FROM `abiturients` where `idabiturients`='$id'";
+$abitTableRes = sqlStr($abitTableSql);
+
+$abitTable = mysqli_fetch_assoc($abitTableRes);
+
+// таблиця адреса
+$addressTableSql = "SELECT * FROM `address` where `idaddress`='$id'";
+$addressTableRes = sqlStr($addressTableSql);
+
+$addressTable = mysqli_fetch_assoc($addressTableRes);
+
+// Інформація про абіт
+
+$infoTableSql = "SELECT * FROM `infoabit` where `idinfoabit`='$id'";
+$infoTableRes = sqlStr($infoTableSql);
+
+
+$infoTable = mysqli_fetch_assoc($infoTableRes);
+
+// Exams
+$examsTableSql = "SELECT * FROM `exams` where `idexams`='$id'";
+$examsTableRes = sqlStr($examsTableSql);
 
 
 
@@ -18,7 +99,7 @@
     <link rel="stylesheet" href="base.min.css" />
     <link rel="stylesheet" href="fancy.min.css" />
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="./zayavastyles.css"/>
+    <link rel="stylesheet" href="./zayavastyles.css" />
     <script src="compatibility.min.js"></script>
     <script src="theViewer.min.js"></script>
     <script>
@@ -43,21 +124,53 @@
                 <div class="t m0 x1 h2 y4 ff2 fs0 fc0 sc0 ls0 ws0">13 <span class="ff1">лютого</span> 2019 <span class="ff1">року</span> <span class="ff1">№</span> 179</div>
                 <div class="t m0 x2 h3 y5 ff3 fs0 fc0 sc0 ls0 ws0">Форма<span class="ff4"> </span>№<span class="ff4"> </span>Н-1.01.1.2</div>
                 <div class="t m0 x3 h4 y6 ff1 fs1 fc0 sc0 ls0 ws0">Першочерговий<span class="ff2"> </span>вступ<span class="ff2"> </span></div>
-                <div class="t m0 x0 h4 y7 ff1 fs1 fc0 sc0 ls0 ws0">Керівнику<span class="ff2 user-text"><!-- first --->  Національного Лісотехнічого університету України</span></div>
+                <div class="t m0 x0 h4 y7 ff1 fs1 fc0 sc0 ls0 ws0">Керівнику<span class="ff2 user-text"><!-- first --->     Національного Лісотехнічого Університету України</span></div>
                 <div class="t m0 x4 h5 y8 ff1 fs2 fc0 sc0 ls0 ws0">(найменування<span class="ff2"> </span>закладу<span class="ff2"> </span>вищої<span class="ff2"> </span>освіти)</div>
-                <div class="t m0 x0 h4 y9 ff1 fs1 fc0 sc0 ls0 ws0">вступника<span class="ff2"> __________________________________________________________________________________________</span></div>
+                <div class="t m0 x0 h4 y9 ff1 fs1 fc0 sc0 ls0 ws0">вступника<span class="ff2 user-text"><!-- name,surname --->  <?php
+                // name surname
+                echo $abitTable['Surname'].' '.$abitTable['Name'].' '.$abitTable['FatherName'] 
+                 
+                 ?></span></div>
                 <div class="t m0 x5 h5 ya ff1 fs2 fc0 sc0 ls0 ws0">(прізвище,<span class="ff2"> </span>ім’я,<span class="ff2"> </span>по<span class="ff2"> </span>батькові)</div>
                 <div class="t m0 x5 h6 yb ff3 fs3 fc0 sc0 ls0 ws0">ЗАЯВА</div>
-                <div class="t m0 x0 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Прошу<span class="ff2"> </span>допустити<span class="ff2"> </span>мене<span class="ff2"> </span>до<span class="ff2"> </span>участі<span class="ff2"> </span>в<span class="ff2"> </span>конкурсному<span class="ff2"> </span>відборі<span class="ff2"> </span>на<span class="ff2"> </span>навчання<span class="ff2"> </span>за<span class="ff2"> _________________ </span>формою<span class="ff2"> </span>здобуття<span class="ff2"> </span>освіти</div>
+                <div class="t m0 x0 h4 yc ff1 fs1 fc0 sc0 ls0 ws0">Прошу<span class="ff2"> </span>допустити<span class="ff2"> </span>мене<span class="ff2"> </span>до<span class="ff2"> </span>участі<span class="ff2"> </span>в<span class="ff2"> </span>конкурсному<span class="ff2"> </span>відборі<span class="ff2"> </span>на<span class="ff2"> </span>навчання<span class="ff2"> </span>за<span class="ff2 user-text"> <!--formaNavch-->    <?php echo switchformaNavch($infoTable['formaNavch']) ?>    </span>формою<span class="ff2"> </span>здобуття<span class="ff2"> </span>освіти</div>
                 <div class="t m0 x6 h5 yd ff2 fs2 fc0 sc0 ls0 ws0"> <span class="ff1">(денна,</span> <span class="ff1">заочна</span> <span class="ff1">(дистанційна),</span> <span class="ff1">вечірня)</span></div>
-                <div class="t m0 x0 h4 ye ff1 fs1 fc0 sc0 ls0 ws0">для<span class="ff2"> </span>здобуття<span class="ff2"> </span>ступеня<span class="ff2"> _________________________________________________________________________________</span></div>
+                <div class="t m0 x0 h4 ye ff1 fs1 fc0 sc0 ls0 ws0">для<span class="ff2"> </span>здобуття<span class="ff2"> </span>ступеня<span class="ff2 user-text"><!-- stupin --> <?php
+                // stupin osv
+                echo switchisBachelour($abitTable['isBachelour']) 
+                
+                ?></span></div>
                 <div class="t m0 x7 h5 yf ff1 fs2 fc0 sc0 ls0 ws0">(бакалавр<span class="ff2"> </span>або<span class="ff2"> </span>магістр)</div>
                 <div class="t m0 x0 h4 y10 ff1 fs1 fc0 sc0 ls0 ws0">на<span class="ff2"> </span>основі<span class="ff2"> </span>освітньо-кваліфікаційного<span class="ff2"> </span>рівня<span class="ff2"> </span>молодшого<span class="ff2"> </span>спеціаліста</div>
-                <div class="t m0 x0 h7 y11 ff1 fs1 fc0 sc0 ls0 ws0">конкурсна<span class="ff2"> </span>пропозиція<span class="ff2"> <span class="fs4">_________________________________________________________________________,</span></span></div>
+                <div class="t m0 x0 h7 y11 ff1 fs1 fc0 sc0 ls0 ws0">конкурсна<span class="ff2"> </span>пропозиція<span class="ff2"> <span class="fs4 user-text"><!-- exams --> <?php 
+                //exams
+                $lim = 0;
+                while ($examsTable = mysqli_fetch_assoc($examsTableRes)) 
+                { 
+                    if($lim<2){
+                        echo switchSpecialty($examsTable['specid']).', ' ;
+                        $lim = $lim + 1;  
+                    }
+                }
+
+                ?></span></span></div>
                 <div class="t m0 x8 h5 y12 ff1 fs2 fc0 sc0 ls0 ws0">(назва<span class="ff2"> </span>конкурсної<span class="ff2"> </span>пропозиції<span class="ff2"> </span>державною<span class="ff2"> </span>мовою)</div>
-                <div class="t m0 x0 h7 y13 ff1 fs1 fc0 sc0 ls0 ws0">спеціальність/напрям<span class="ff2 fs4"> _________________________________________________________________________,</span></div>
+                <div class="t m0 x0 h7 y13 ff1 fs1 fc0 sc0 ls0 ws0">спеціальність/напрям<span class="ff2 fs4 user-text"> <?php
+                $examsTableRes = sqlStr($examsTableSql);
+                while ($examsTable = mysqli_fetch_assoc($examsTableRes)) 
+                { 
+                    
+                        echo $examsTable['specid'] . ', ' ;
+                        
+                    }
+                
+                
+                ?></span></div>
                 <div class="t m0 x9 h5 y14 ff1 fs2 fc0 sc0 ls0 ws0">(код<span class="ff2"> </span>та<span class="ff2"> </span>найменування<span class="ff2"> </span>спеціальності,<span class="ff2"> </span>спеціалізації<span class="ff2"> </span>спеціальностей<span class="ff2"> 014, 015, 035, 275)</span></div>
-                <div class="t m0 x0 h7 y15 ff2 fs4 fc0 sc0 ls0 ws0">__________________________________________________________________________________________</div>
+                <div class="t m0 x0 h7 y15 ff2 fs4 fc0 sc0 ls0 ws0 user-text"><?php 
+                    
+
+                ?></div>
                 <div class="t m0 xa h5 y16 ff1 fs2 fc0 sc0 ls0 ws0">(назва<span class="ff2"> </span>спеціалізації<span class="ff2"> </span>та/або<span class="ff2"> </span>освітньої<span class="ff2"> </span>програми<span class="ff2"> </span>державною<span class="ff2"> </span>мовою)</div>
                 <div class="t m0 xb h4 y17 ff2 fs1 fc0 sc0 ls0 ws0"> <span class="_ _0"> </span><span class="ff1">Претендую</span> <span class="_ _0"> </span><span class="ff1">на</span> <span class="_ _0"> </span><span class="ff1">участь</span> <span class="_ _0"> </span><span class="ff1">у</span> <span class="_ _0"> </span><span class="ff1">конкурсі</span> <span class="_ _0"> </span><span class="ff1">на</span> <span class="_ _0"> </span><span class="ff1">місця</span> <span class="_ _0"> </span><span class="ff1">за</span> <span class="_ _0"> </span><span class="ff1">кошти</span> <span class="_ _0"> </span><span class="ff1">державного</span> <span class="_ _0"> </span><span class="ff1">або</span> <span class="_ _0"> </span><span class="ff1">регіонального</span> <span class="_ _0"> </span><span class="ff1">бюджету</span> <span class="_ _0"> </span><span class="ff1">і</span> <span class="_ _0"> </span><span class="ff1">на</span> <span class="_ _0"> </span><span class="ff1">участь</span> <span class="_ _0"> </span><span class="ff1">у</span> </div>
                 <div class="t m0 x0 h4 y18 ff1 fs1 fc0 sc0 ls0 ws0">конкурсі<span class="ff2"> <span class="_ _1"> </span></span>на<span class="ff2"> <span class="_ _1"> </span></span>місця<span class="ff2"> <span class="_ _1"> </span></span>за<span class="ff2"> <span class="_ _1"> </span></span>кошти<span class="ff2"> <span class="_ _1"> </span></span>фізичних<span class="ff2"> <span class="_ _1"> </span></span>та/або<span class="ff2"> <span class="_ _1"> </span></span>юридичних<span class="ff2"> <span class="_ _1"> </span></span>осіб<span class="ff2"> <span class="_ _1"> </span></span>у<span class="ff2"> <span class="_ _1"> </span></span>разі<span class="ff2"> <span class="_ _1"> </span></span>неотримання<span class="ff2"> <span class="_ _1"> </span></span>рекомендації<span class="ff2"> <span class="_ _1"> </span></span>за<span class="ff2"> <span class="_ _1"> </span></span>цією<span class="ff2"> <span class="_ _1"> </span></span>конкурсною<span class="ff2"> </span></div>
@@ -67,7 +180,11 @@
                 <div class="t m0 x8 h6 y1c ff3 fs3 fc0 sc0 ls0 ws0">Про<span class="ff4"> </span>себе<span class="ff4"> </span>повідомляю</div>
                 <div class="t m0 x0 h4 y1d ff1 fs1 fc0 sc0 ls0 ws0">Відповідний<span class="ff2"> <span class="_ _3"> </span></span>ступінь<span class="ff2"> <span class="_ _3"> </span></span>вищої<span class="ff2"> <span class="_ _3"> </span></span>освіти<span class="ff2"> <span class="_ _3"> </span></span>за<span class="ff2"> <span class="_ _3"> </span></span>бюджетні<span class="ff2"> <span class="_ _3"> </span></span>кошти:<span class="ff2"> <span class="_ _3"> </span></span>ніколи<span class="ff2"> <span class="_ _3"> </span></span>не<span class="ff2"> <span class="_ _3"> </span></span>здобувався<span class="ff2"> <span class="_ _4"> </span>; <span class="_ _3"> </span></span>вже<span class="ff2"> <span class="_ _3"> </span></span>здобутий<span class="ff2"> <span class="_ _3"> </span></span>раніше<span class="ff2"> <span class="_ _4"> </span>; </span></div>
                 <div class="t m0 x0 h4 y1e ff1 fs1 fc0 sc0 ls0 ws0">вже<span class="ff2"> </span>здобувався<span class="ff2"> </span>раніше<span class="ff2"> </span>(навчання<span class="ff2"> </span>не<span class="ff2"> </span>завершено)<span class="ff2"> </span></div>
-                <div class="t m0 x0 h4 y1f ff1 fs1 fc0 sc0 ls0 ws0">Закінчив(ла)<span class="ff2"> _________________________________________________________________________________________</span></div>
+                <div class="t m0 x0 h4 y1f ff1 fs1 fc0 sc0 ls0 ws0">Закінчив(ла)<span class="ff2 user-text"> <?php 
+                
+                
+                
+                ?></span></div>
                 <div class="t m0 xc h5 y20 ff1 fs2 fc0 sc0 ls0 ws0">(повне<span class="ff2"> </span>найменування<span class="ff2"> </span>закладу<span class="ff2"> </span>освіти,<span class="ff2"> </span>рік<span class="ff2"> </span>закінчення)</div>
                 <div class="t m0 x0 h4 y21 ff2 fs1 fc0 sc0 ls0 ws0">_____________________________________________________. <span class="ff1">Іноземна</span> <span class="ff1">мова,</span> <span class="ff1">яку</span> <span class="ff1">вивчав(ла)</span> ____________________</div>
                 <div class="c x0 y22 w2 h8">
@@ -112,13 +229,25 @@
                 <div class="t m0 x0 h4 y2a ff1 fs1 fc0 sc0 ls0 ws0">На<span class="ff2"> </span>час<span class="ff2"> </span>навчання<span class="ff2"> </span>поселення<span class="ff2"> </span>в<span class="ff2"> </span>гуртожиток:<span class="ff2"> </span>потребую<span class="ff2"> <span class="_ _5"> </span>; </span>не<span class="ff2"> </span>потребую<span class="ff2"> <span class="_ _5"> </span>. </span>Стать:<span class="ff2"> </span>чоловіча<span class="ff2"> <span class="_ _5"> </span>; </span>жіноча<span class="ff2"> </span></div>
                 <div class="t m0 x0 h4 y2b ff1 fs1 fc0 sc0 ls0 ws0">Громадянство:<span class="ff2"> </span>Україна<span class="ff2"> <span class="_ _5"> </span>; </span>інша<span class="ff2"> </span>країна:<span class="ff2"> _________________________________________________________________</span></div>
                 <div class="t m0 x0 h4 y2c ff1 fs1 fc0 sc0 ls0 ws0">Дата<span class="ff2"> </span>і<span class="ff2"> </span>місце<span class="ff2"> </span>народження:<span class="ff2"> ______________________________________________________________________________</span></div>
-                <div class="t m0 x0 h4 y2d ff2 fs1 fc0 sc0 ls0 ws0">____________________________________________________________________________________________________</div>
+                <div class="t m0 x0 h4 y2d ff2 fs1 fc0 sc0 ls0 ws0 user-text"><?php 
+                    
+
+                ?>__________</div>
                 <div class="t m0 x0 h4 y2e ff1 fs1 fc0 sc0 ls0 ws0">Місце<span class="ff2"> </span>проживання:<span class="ff2"> </span>вулиця___________________,<span class="ff2"> </span>будинок<span class="ff2"> ____, </span>квартира<span class="ff2"> ____, </span>місто/селище/село<span class="ff2"> ______________, </span></div>
-                <div class="t m0 x0 h4 y2f ff1 fs1 fc0 sc0 ls0 ws0">район____________________,<span class="ff2"> </span>область<span class="ff2"> _____________________, </span>індекс__________,<span class="ff2"> </span>домашній,<span class="ff2"> </span>мобільний<span class="ff2"> </span>телефони<span class="ff2"> </span></div>
+                <div class="t m0 x0 h4 y2f ff1 fs1 fc0 sc0 ls0 ws0 user-text"><?php 
+                    
+
+                ?>,<span class="ff2"> </span>область<span class="ff2"> _____________________, </span>індекс__________,<span class="ff2"> </span>домашній,<span class="ff2"> </span>мобільний<span class="ff2"> </span>телефони<span class="ff2"> </span></div>
                 <div class="t m0 x0 h4 y30 ff2 fs1 fc0 sc0 ls0 ws0">_________<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>, <span class="_ _6"></span><span class="ff1">ел<span class="_ _6"></span>ек<span class="_ _6"></span>тр<span class="_ _6"></span>он<span class="_ _6"></span>на<span class="_ _6"></span><span class="ff2"> <span class="ff1">п<span class="_ _6"></span>ош<span class="_ _6"></span>та<span class="_ _6"></span><span class="ff2"> _<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>__<span class="_ _6"></span>_</span></span></span></span></div>
                 <div class="t m0 x0 h4 y31 ff1 fs1 fc0 sc0 ls0 ws0">Додаткова<span class="ff2"> </span>інформація:<span class="ff2"> ________________________________________________________________________________</span></div>
-                <div class="t m0 x0 h4 y32 ff2 fs1 fc0 sc0 ls0 ws0">____________________________________________________________________________________________________</div>
-                <div class="t m0 x0 h4 y33 ff2 fs1 fc0 sc0 ls0 ws0">____________________________________________________________________________________________________</div>
+                <div class="t m0 x0 h4 y32 ff2 fs1 fc0 sc0 ls0 ws0 user-text"><?php 
+                    
+
+                ?>__________</div>
+                <div class="t m0 x0 h4 y33 ff2 fs1 fc0 sc0 ls0 ws0 user-text"><?php 
+                    
+
+                ?>__________</div>
                 <div class="t m0 x18 h9 y34 ff1 fs5 fc0 sc0 ls0 ws0">Попереджений(а),<span class="ff2"> <span class="_ _2"> </span></span>що<span class="ff2"> <span class="_ _1"> </span></span>подання<span class="ff2"> <span class="_ _2"></span></span>мною<span class="ff2"> <span class="_ _1"> </span></span>недостовірних<span class="ff2"> <span class="_ _2"></span></span>персональних<span class="ff2"> <span class="_ _2"> </span></span>даних,<span class="ff2"> <span class="_ _1"> </span></span>даних<span class="ff2"> <span class="_ _2"></span></span>про<span class="ff2"> <span class="_ _2"> </span></span>спеціальні<span class="ff2"> <span class="_ _1"> </span></span>умови<span class="ff2"> <span class="_ _2"> </span></span>зарахування,<span class="ff2"> <span class="_ _1"> </span></span>здобуту<span class="ff2"> </span></div>
                 <div class="t m0 x0 h9 y35 ff1 fs5 fc0 sc0 ls0 ws0">раніше<span class="ff2"> </span>освіту<span class="ff2"> </span>є<span class="ff2"> </span>підставою<span class="ff2"> </span>для<span class="ff2"> </span>скасування<span class="ff2"> </span>наказу<span class="ff2"> </span>про<span class="ff2"> </span>моє<span class="ff2"> </span>зарахування<span class="ff2"> </span>до<span class="ff2"> </span>числа<span class="ff2"> </span>студентів.</div>
                 <div class="t m0 x18 h9 y36 ff1 fs5 fc0 sc0 ls0 ws0">З<span class="ff2"> <span class="_ _2"></span></span>правилами<span class="ff2"> <span class="_ _2"></span></span>прийому,<span class="ff2"> <span class="_ _2"></span></span>ліцензією<span class="ff2"> <span class="_ _2"></span></span>та<span class="ff2"> <span class="_ _2"></span></span>сертифікатом<span class="ff2"> <span class="_ _2"></span></span>про<span class="ff2"> <span class="_ _2"></span></span>акредитацію<span class="ff2"> <span class="_ _2"></span></span>напряму<span class="ff2"> <span class="_ _2"></span></span>підготовки<span class="ff2"> <span class="_ _2"></span>/ <span class="_ _2"></span></span>спеціальності<span class="ff2"> <span class="_ _2"></span>/ <span class="_ _2"></span></span>освітньої<span class="ff2"> <span class="_ _2"></span></span>програми<span class="ff2"> </span></div>

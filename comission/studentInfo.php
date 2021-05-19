@@ -88,7 +88,7 @@
     <tr  onclick="changeField(`abiturients`,`Surname`)"><td>Прізвище</td><td>' . $abitTable['Surname'] . '</td></tr>
     <tr  onclick="changeField(`abiturients`,`Name`)"><td>Імя</td><td>' . $abitTable['Name'] . '</td></tr>
     <tr  onclick="changeField(`abiturients`,`FatherName`)"><td>По батькові</td><td>' . $abitTable['FatherName'] . '</td></tr>
-    <tr  onclick="changeField(`abiturients`,`abitTable`)"><td>Ступінь навчання</td><td>' . switchisBachelour($abitTable['isBachelour']) . '</td></tr>
+    <tr  onclick="changeField(`abiturients`,`isBachelour`)"><td>Ступінь навчання</td><td>' . switchisBachelour($abitTable['isBachelour']) . '</td></tr>
     <tr  onclick="changeField(`abiturients`,`Institute`)"><td>Інститут</td><td>' . switchInstitute($abitTable['Institute']) . '</td></tr>
 
     </table>';
