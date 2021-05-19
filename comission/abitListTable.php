@@ -45,7 +45,7 @@
 
                         // var_dump($_POST);
 
-                        require './connection.php';
+                        require '../connection.php';
                         $limit = $_POST['count'] ? ($_POST['count'] === 'all' ? '' : 'LIMIT ' . $_POST['count']) : 'LIMIT 5';
                         $sql = "SELECT * FROM `abiturients` ORDER BY `idAbit` DESC $limit";
                         // echo $sql;

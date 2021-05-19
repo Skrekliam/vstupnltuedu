@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Логін</title>
-    <?php include('../bootstrapInfo.php') ?>
+    <?php include("../bootstrapInfo.php") ?>
 </head>
 
 <body>
@@ -35,11 +35,13 @@
 
 <?php
 session_start();
+if($_SESSION){
+    session_unset();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
-    echo 'her';
-    require '../connection.php';
+    require "../connection.php";
     $myusername = mysqli_real_escape_string($con, $_POST['login']);
     $mypassword = mysqli_real_escape_string($con, $_POST['password']);
     
@@ -56,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_user'] = $myusername;
         
 
-        header("location: comission/admin.php");
+        header("location: http://".$_SERVER['HTTP_HOST']."/comission/admin.php");
     } else {
         $error = "Your Login Name or Password is invalid";
     echo 'he41';
